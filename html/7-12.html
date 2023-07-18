@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, tr, td {
+            border: 1px solid black;
+            /* border-collapse: collapse; */
+            /* border-spacing: 50px; */
+            border-style: solid;
+            
+        }
+        table{
+            width: 100%;
+            /* border-radius: 10px;  */
+        }
+        /* 상속 개념 */
+        tr:nth-child(even) td{
+            background-color : lightcyan;
+        }
+         th, td{
+            background-color: lightgoldenrodyellow;
+            /* padding: 10px; */
+        }
+    
+    </style>
+</head>
+<body>
+    <!-- what is sub -->
+    <p>This is H<sub>2</sub>O</p>
+    <p>The formula is e<sup>2</sup></p>
+    <h1 style="background-color:yellow;">Back-ground color</h1>
+
+    <!-- rgb -->
+    <h1 style="background-color:rgb(255, 79, 101);">Back-ground color RGB</h1>
+
+    <!-- Hex code -->
+    <h1 style="background-color:#a3948e;">Back-ground color Hex code</h1>
+
+    <!-- HSLA -->
+    <h1 style="background-color:hsla(300,76%,72%);">Back-ground color HSLA</h1>
+    <h1 style="background-color:hsla(9,100%,40%,0.5);">Back-ground color HSLA</h1>
+    <h1 style="border: 6px solid;">Border 6px</h1> 
+    <h1 style="border: 2px solid;">Border 2px</h1>
+    <h1 style="border: 6px solid blue;">Border 6px blue</h1>
+
+    <!-- table 표  // tr : row 가로 개수  // td : colum 세로 개수 // th : table heading -->
+    <table>
+        <tr>
+            <th colspan="2">Name</th>
+            <!-- <th>Last Name</th> -->
+            <th>Country</th>
+        </tr>
+        <tr>
+            <td>A</td>
+            <td>X</td>
+            <td>M</td>
+        </tr>
+        <tr>
+            <td>B</td>
+            <td>Y</td>
+            <td>N</td>
+        </tr>
+        <!-- <tr>
+            <td>C</td>
+            <td>Z</td>
+            <td>O</td>
+        </tr> -->
+    </table>
+    <br>
+    <table>
+        <!-- 2 rows : first row have th, td and second row only have td -->
+        <tr>
+            <th rowspan="2">July</th>
+            <td>Rent</td>
+        </tr>
+        <tr>
+            <td>Grocery</td>
+        </tr>
+    </table>
+    <br>
+    <table>
+        <colgroup>
+        <col span="2" style="background-color: blue;">
+        <tr>
+            <th>MON</th>
+            <th>TUE</th>
+            <th>WED</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+    </colgroup>
+    </table>
+    <br> <br>
+    
+    <!-- Order list <ol> and Unorder list <ul> -->
+    <label><u>Order list</u></label>
+    <!-- 단축어 !!!     ol>li*4     -->
+    <ol>
+        <li>Rent</li>
+        <li>Grocery</li>
+        <li>Phone</li>
+        <li>Entertainment</li>
+    </ol>
+    <label><u>Unorder list</u></label>
+    <ul>
+        <li>Rent</li>
+        <li>Grocery</li>
+        <li>Phone</li>
+        <li>Entertainment</li>
+    </ul>
+
+
+    <br>
+    <dl>
+        <dt>coffee</dt>
+        <dd>Black Got drink</dd>
+        <dt>Milk</dt>
+        <dd>xyz</dd>
+    </dl>
+
+
+
+    <table>
+        <tr>
+            <th>Months</th>
+            <th>Expenses</th>
+            <th>City</th>
+        </tr>
+        <tr>
+            <td>January</td>
+            <td><ol>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ol></td>
+            <td>Vancouver</td>
+        </tr>
+        <tr>
+            <td>Febraury</td>
+            <td><ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul></td>
+            <td>Vancouver</td>
+        </tr>
+        <tr>
+            <td>March</td>
+            <td>
+                <dl>
+                    <dt>A</dt>
+                    <dd>description</dd>
+                    <dt>B</dt>
+                    <dd>description</dd>
+                </dl>
+            </td>
+            <td>Vancouver</td>
+        </tr>
+    </table>
+    <video width="320" height="240" controls >
+        <source src = "../image/video.mp4" type="video/mp4">
+    </video>
+    <br>
+
+
+
+    
+    <!-- 7/13 -->
+    <audio controls >
+        <source src="../image/ambient-relaxing-music-for-you-15969.mp3" type="audio/mpeg">
+    </audio>
+    <br>
+
+    <!-- 자동재생 링크에 ?autoplay=1&mute=1 추가하기 -->
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/moIOVVEIffQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <br><br><br><br>
+    <h1 style="color: plum;">* form elements *</h1>
+    <!-- form elements -->
+    <form>
+        <label>First Name</label>
+        <input type="text"/> <br>
+        <br>
+
+        <!-- multiple value ** 체크박스랑 label이랑 id 같아야함 id로 확인할 수 있음 // value가 전송되는 값..?-->
+        <input type="checkbox" id="id1" name="html" value="html"/> 
+        <label id="id1">html</label> <br>
+        <input type="checkbox" id="id2" name="css" value="css"/>
+        <label id="id2">css</label> <br>
+        <input type="checkbox" id="id3" name="js" value="js"/>
+        <label id="id3">js</label> <br>
+
+        <br>
+        <!-- ** 같은 그룹이면 name이 같아야한다 ** -->
+        <input type="radio" id="id4" name="html" value="html"/> 
+        <label id="id4">html</label> <br>
+        <input type="radio" id="id5" name="html" value="css"/>
+        <label id="id4">css</label> <br>
+        <input type="radio" id="id6" name="html" value="js"/>
+        <label id="id4">js</label> <br>
+
+        <br>
+        <input type="button" onclick="alert('you have clicked the button')" value="submit"/>
+
+        <br><br>
+        <input type="color" id="color1" name="red" value="#ff0000"/>
+        <label id="color1">RED</label>
+
+        <br><br>
+        <!-- date : yyyy-mm-dd -->
+        <input type="date" id="birthday" name="bday"> <br>
+        <label for="birthday">Select Birthday!!</label> <br> <br>
+
+        <input type="date" id="id7" name="mindate" min="2000-04-09"/>
+        <label for=""> ~ </label>
+        <input type="date" id="id8" name="maxdate" max="2023-07-13"/>
+
+        <br><br>
+        <label for="">date time local</label> <br>
+        <input type="datetime-local"/>
+
+        <br><br>
+        <input type="email" id="email1" name="email"/>
+        <label for="email1">email</label>
+
+        <br> <br>
+        <input type="image" src="../image/right-arrow.png" alt="Image description" width="100" height="100">   
+             
+        <br> <br>
+        <input type="file" id="file1" name="fileinfo"/>
+
+        <br><br>
+        <!-- year and month only -->
+        <input type="month" id="month" name="birthdaymonth"/>
+
+        <br><br>
+        <!-- 번호만 -->
+        <label for="">only number</label> <br>
+        <input type="number" id="num" min="1" max="5"> <br>
+        <input type="number" id="num" name="no1" min="10" max="100" step="10"/>
+
+        <br><br>
+        <label for="">search</label>
+        <input type="search" id="sch" name="gsearch"/>
+
+        <br><br>
+        <label for="">phone number : </label>
+        <input type="tel" id="Phonenum" name="mobilenum" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="10" required/> <br>
+        <input type="tel" id="Phonenum" name="mobilenum" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="10" placeholder="123-345-7891"/>
+
+        <br><br>
+        <input type="week" id="week1" name="week" />
+
+        <br><br>
+        <label for="">first name</label>
+        <input type="text" required/>
+
+        <br><br>
+        <label for="">read only value</label>
+        <input type="text" id="id9" name="readonly" value="John" readonly />
+
+        <br><br>
+        <label for="">disabled value</label>
+        <input type="text" id="id9" name="disabled" value="John" disabled />
+
+        <br><br>
+        <label for="">autofocus value</label>
+        <input type="text" id="id9" name="autofocus" value="John" autofocus />
+
+        <br><br>
+        <input list="browser" name="browser"/>
+        <datalist id="browser">
+            <option value="BMW">BMW</option>
+            <option value="Mercedes">Mercedes</option>
+        </datalist>
+    </form>
+
+</body>
+</html>

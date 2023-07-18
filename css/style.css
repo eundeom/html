@@ -1,0 +1,33 @@
+p{
+    background-color: aliceblue;
+}
+h1{
+    background-color: azure;
+}
+/* id */
+#bt1 { 
+    background-color: rgb(179, 255, 255);
+}
+#p1 {
+    background-color: aliceblue;
+}
+#p2 {
+    background-color: rgb(223, 229, 235);
+}
+#p3 {
+    background-color: rgb(227, 231, 235);
+}
+#i1{
+    color: blue;
+}
+#i2{
+    color: rgba(255, 0, 128, 0.205);
+}
+/* class 는 dot */
+.fa-heart{
+    color: rgb(200, 255, 237);
+}
+.glyphicon-heart{
+    color: rgb(255, 162, 188);
+    font-size: 50px;
+}

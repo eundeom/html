@@ -1,0 +1,82 @@
+#head1{
+    text-align: center;
+    /* margin-left: 230px;
+    margin-right: 230px; */
+    width: 70%;
+    margin: 30px auto 30px;
+    /* margin-bottom: 30px; */
+    background-color: rgb(0, 106, 255);
+    color: rgb(255, 255, 255);
+    /* font-size: 40px; */
+}
+#p1{
+    color: rgb(255, 31, 143);
+    /* background-color: black; */
+    text-align: center;
+    /* font-size: 25px; */
+}
+#heart{
+    font-size: 15px;
+    color: pink;
+}
+p{
+    text-align: center;
+}
+#kei{
+    /* font-size: 20px; */
+    color: rgb(0, 0, 0);
+    font-style: italic;
+}
+#div2{
+    text-align:center;
+    /* font-size: 20px; */
+    border: solid;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+#div1{
+    text-align:center;
+    font-size: 20px;
+}
+a{
+    text-align: center;
+}
+.bi-facebook{
+    color: rgb(54, 127, 255);
+    /* text-align:center; */
+}
+.bi-instagram{
+    color: rgb(255, 117, 140);
+}
+.bi-linkedin{
+    color: rgb(66, 127, 218);
+}
+.bi-twitter{
+    color: rgb(53, 185, 241);
+}
+#p2{
+    /* margin-left: 280px;
+    margin-right: 280px; */
+    width: 35%;
+    margin: 30px auto 30px;
+    background-color: green;
+    color: white;
+    text-size-adjust: 10px;
+}
+#p2:hover{
+    /* margin-left: 280px;
+    margin-right: 280px; */
+    width: 35%;
+    margin: 30px auto 30px;
+    background-color: rgb(255, 77, 22);
+    color: white;
+    text-size-adjust: 10px;
+}
+/* for img  */
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* width: 50%; */
+  }

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servey Form</title>
+    <style>
+        label, h1{
+            color: lightcoral;
+            background-color: azure;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="background-color: azure; border: 4px; border-style: outset; color: aqua;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Survey form</h1>
+
+    <label for="fname" style="background-color: black; color: rgb(0, 255, 72);">Customer FirstName</label>
+    <input type="text" id="fname"> <br><br>
+
+    <h3 for="lname" style="color: rgb(81, 0, 255);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Customer LastName</h3>
+    <input type="text" id="lname"> <br><br>
+
+    <label for="addr" style="background-color: black; color: aliceblue;">Address</label>
+    <input type="text" id="addr">  <br><br>
+
+    <label for="city" style="color: rgb(255, 0, 144);">City&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+    <input type="text" id="city"> <br><br>
+
+    <h2 for="Phone" style="background-color: black; color: aliceblue;">Phone</h2>
+    <input type="tel" id="Phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="12" placeholder="778-956-4345"> <br><br>
+
+    <label for="bdate" style="color: rgb(255, 115, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Birth-date</label>
+    <input type="date" id="bdate"> <br><br>
+
+    <!-- dropdown : student worker PR-->
+    <label for="status" style="color: rgb(0, 136, 255);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;status in Canada</label> <br>
+    <input list="status" name="status"/>
+    <datalist id="status">
+        <option value="student">student</option>
+        <option value="worker">worker</option>
+        <option value="PR">PR</option>
+    </datalist>
+    <br><br>
+
+    <!-- gender : checkbox -->
+    <h1 for="Gender" style="background-color: black; color: rgb(174, 0, 255);">Gender</h1>
+    <input type="checkbox" id="Gender" value="male" name="Gender"> 
+    <label id="Gender">male</label>
+    <input type="checkbox" id="Gender1" value="female" name="Gender">
+    <label id="Gender1">female</label><br><br>
+
+    <!-- skills : radio -->
+    <label id="skills" style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Skills</label>
+    <!-- <label id="skills" style="color: red;">kill</label>
+    <label id="skills" style=" color: black;">s  </label> -->
+    <input type="radio" id="skill1" name="skills" value="skill1"> 
+    <label for="skill1" style="color: red;">skill1</label>
+    <input type="radio" id="skill2" name="skills" value="skill2"> 
+    <label for="skill2" style="color: red;">skill2</label>
+    <input type="radio" id="skill3" name="skills" value="skill3">
+    <label for="skill3" style="color: red;">skill3</label><br><br>
+
+    <!-- image -->
+    <input type="image" src="../image/plan gif marketing strategy.gif.webp" width="300" height="200">
+    <br> <br>
+
+    <!-- image upload resume -->
+    <label for="file" style="background-color: black; color: rgb(255, 0, 93);">upload resume</label>
+    <input type="file" id="file"> <br><br>
+
+    <!-- 5 is minimum & radio  -->
+    <h2 for="" style="background-color: black; color: rgb(204, 255, 0);">Ratings</h2> <br>
+    <input type="radio" name="rat1" id="one">
+    <label for="one">1</label>
+    <input type="radio" name="rat1" id="two">
+    <label for="two">2</label>
+    <input type="radio" name="rat1" id="three">
+    <label for="three">3</label>
+    <input type="radio" name="rat1" id="four">
+    <label for="four" style="color: red;">4</label>
+    <input type="radio" name="rat1" id="five">
+    <label for="five">5</label>
+    <br><br>
+
+    <input type="button" onclick="alert('thank you!')" value="submit" width="500" height="30">
+</body>
+</html>
