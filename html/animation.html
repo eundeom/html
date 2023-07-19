@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+    <style>
+        .circleLink {
+        color: #ececec;
+        text-transform: uppercase;
+        font-size: 24px;
+        line-height: 120%;
+        position: relative;
+        display: inline-block;
+        border: 1px solid rgb(216, 216, 255);
+        width: 200px;
+        height: 200px;
+        -moz-box-flex: 0;
+        flex: 0 0 270px;
+        display: -moz-box;
+        display: flex;
+        -moz-box-pack: center;
+        justify-content: center;
+        -moz-box-align: center;
+        align-items: center;
+        border-radius: 50%;
+        }
+
+        .round>span:first-child {
+        position: relative;
+        color:rgb(211, 211, 255);
+        }
+
+        .round>span:first-child::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 0;
+        border: 1px solid #ececec;
+        bottom: -5px;
+        background: #ececec;
+        border-radius: 10px;
+        left: 0;
+        }
+
+        .round>span:nth-child(2) {
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        transform: rotate(90deg);
+        }
+
+        .circleLink>span:nth-child(2) {
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        }
+
+        .circleLink>span:nth-child(2) span {
+        position: absolute;
+        top: -webkit-calc(50% - 0.5px);
+        top: -moz-calc(50% - .5px);
+        top: calc(50% - 0.5px);
+        left: 50%;
+        z-index: 1;
+        width: 50%;
+        height: 1px;
+        -webkit-transform-origin: left;
+        -moz-transform-origin: left;
+        transform-origin: left;
+        -webkit-animation: linkRotate 5s linear 0s infinite;
+        -moz-animation: linkRotate 5s linear 0s infinite;
+        animation: linkRotate 5s linear 0s infinite;
+        -webkit-animation-play-state: paused;
+        -moz-animation-play-state: paused;
+        animation-play-state: paused;
+        }
+
+        .circleLink>span:nth-child(2) span:before {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        top: -10px;
+        right: -10px;
+        background: #ff007b;
+        border-radius: 50%;
+        }
+
+        .circleLink:hover>span:nth-child(2) span {
+        -webkit-animation-play-state: running;
+        -moz-animation-play-state: running;
+        animation-play-state: running;
+        }
+
+        @-webkit-keyframes linkRotate {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg)
+        }
+
+        to {
+            -webkit-transform: rotate(1turn);
+            transform: rotate(1turn)
+        }
+        }
+
+        @-moz-keyframes linkRotate {
+        0% {
+            -moz-transform: rotate(0deg);
+            transform: rotate(0deg)
+        }
+
+        to {
+            -moz-transform: rotate(1turn);
+            transform: rotate(1turn)
+        }
+        }
+
+        @keyframes linkRotate {
+        0% {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            transform: rotate(0deg)
+        }
+
+        to {
+            -webkit-transform: rotate(1turn);
+            -moz-transform: rotate(1turn);
+            transform: rotate(1turn)
+        }
+        }
+
+
+
+        
+        #cc{
+            width: 50px;
+            height: 50px;
+            background-color: green;
+            animation-name: animation1;
+            animation-duration: 2s;
+        }
+
+
+
+
+        /* make an animation  */
+        @keyframes animation1 {
+            from {background-color: pink;}
+            to {background-color: aquamarine;}
+        }
+
+
+
+
+
+        body {
+            background: black;
+            color: #fff;
+        }
+
+        .main {
+            width: 330px;
+            height: 330px;
+            border: 1px solid #CCC;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            border-radius: 50%;
+        }
+
+        .circle {
+            width: 30px;
+            height: 30px;
+            background: cyan;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            overflow: hidden;
+            margin: auto;
+            animation: circle 6s linear infinite;
+        }
+
+        @keyframes circle {
+            from{
+             transform:rotate(0deg)
+              translate(-165px)  /*change the X and Y coordinates of the circle in 2D */
+              rotate(0deg);
+  
+            }
+            to{
+                        transform:rotate(360deg)
+                        translate(-165px)
+                        rotate(-360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Animation</h1>
+    <div class="round">
+        <a href="#" class="circleLink">
+            <span></span>
+            <span><span></span></span>
+        </a>
+    </div>
+
+    <div class="main">
+        <div class="circle"></div>
+    </div>
+
+    <div id="cc"></div>
+
+    <!-- <p><b>Not:</b> When an animation is finished, it goes back to its original style.</p> -->
+</body>
+</html>
