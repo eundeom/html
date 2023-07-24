@@ -1,0 +1,91 @@
+
+/* html {
+  
+  text-align: center;
+  font-size: 10px;
+} */
+.timezone{
+  top: -20%;
+  position: absolute;
+  left: 40%;
+}
+.body1 {
+  margin: 0;
+  font-size: 2rem;
+  display: flex;
+  flex: 1;
+  min-height: 100vh;
+  align-items: center;
+}
+ 
+.clockpst {
+    background: #edf7ff;
+  width: 20rem;
+  height: 20rem;
+  position: relative;
+  padding: 2rem;
+  border: 4px solid #cda14e;
+  box-shadow: -4px -4px 10px rgba(199, 199, 199, 0.5),
+                inset 4px 4px 10px rgba(198, 198, 198, 0.5),
+                inset -4px -4px 10px rgba(145, 145, 145, 0.5),
+                4px 4px 10px rgba(131, 131, 131, 0.3);
+  border-radius: 50%;
+  margin: 50px auto;
+ 
+}
+
+.hand {
+  width: 50%;
+  right: 50%;
+  height: 6px;
+  background: #e8d752;
+  position: absolute;
+  top: 50%;
+  border-radius: 6px;
+  transform-origin: 100%;
+  transform: rotate(90deg);
+  transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+}
+ 
+.hand.hour-hand.pst {
+  width: 30%;
+  z-index: 3;
+  animation: hour1 43200s linear infinite;
+  animation-name: hour1;
+}
+ 
+.hand.min-hand.pst {
+  height: 3px;
+  z-index: 10;
+  width: 40%;
+  animation: min1 3600s linear infinite;
+  animation-name: min1;
+}
+ 
+.hand.second-hand.pst {
+  background: #ee791a;
+  width: 45%;
+  height: 2px;
+  animation: sec1 60s linear infinite;
+  animation-name: sec1;
+}
+.allclockpst{
+  position:absolute;
+  top: 65%;
+  left: 25%;
+}  
+@keyframes sec1 {
+  0% { transform: rotate(90deg); }
+  100% { transform: rotate(450deg); }
+}
+
+@keyframes min1 {
+  0% { transform: rotate(90deg); }
+  100% { transform: rotate(450deg); }
+}
+
+@keyframes hour1 {
+  0% { transform: rotate(90deg); }
+  100% { transform: rotate(450deg); }
+}
+ 

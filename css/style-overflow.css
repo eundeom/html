@@ -1,0 +1,17 @@
+div{
+    width: 150px;
+    height: 200px;
+    background-color: plum;
+    overflow: auto;
+    /* overflow: scroll; */
+    /* overflow: visible; */
+    /* overflow: hidden; */
+}
+.right{
+    width: 300px;
+    height: 150px;
+    float: right;
+}
+/* #p1{
+    float: right;
+} */

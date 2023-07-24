@@ -1,0 +1,49 @@
+.logo{
+    float: left;
+    font-size: 20px;
+}
+
+.clock{
+    display: block;
+    margin: 20px;
+    float: left;
+}
+.total{
+    margin-left: 11%;
+    margin-top: 70px;
+}
+
+.log a{
+    float: right; 
+    margin: 5px;
+}
+.log{
+    margin-top: 20px;
+}
+
+.head1{
+    border: 20px solid rgb(255, 255, 255);
+    margin-top: 10px;
+}
+.desc1{
+    text-align: right;
+    font-size: 14px;
+    color: rgb(103, 103, 103);
+}
+.desc2{
+    text-align: right;
+    font-size: 13px;
+    color: rgb(208, 208, 208);
+}
+.desc{
+    text-align: right;
+    margin-bottom: 3px;
+    font-size: 16px;
+}
+
+.clock{
+    border: 1px solid rgb(203, 203, 203);
+}
+header{
+    top: 10px;
+}

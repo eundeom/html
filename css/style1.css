@@ -37,7 +37,8 @@ p{
 }
 #div1{
     text-align:center;
-    font-size: 20px;
+    font-size: 30px;
+    margin-bottom: 5%;
 }
 a{
     text-align: center;
@@ -60,7 +61,7 @@ a{
     margin-right: 280px; */
     width: 35%;
     margin: 30px auto 30px;
-    background-color: green;
+    background-color: rgb(200, 239, 245);
     color: white;
     text-size-adjust: 10px;
 }
@@ -69,10 +70,16 @@ a{
     margin-right: 280px; */
     width: 35%;
     margin: 30px auto 30px;
-    background-color: rgb(255, 77, 22);
+    background-color: rgb(255, 233, 226);
     color: white;
     text-size-adjust: 10px;
 }
+
+#p2{
+    background-color: black;
+    
+}
+
 /* for img  */
 .center {
     display: block;

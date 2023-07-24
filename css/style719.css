@@ -1,0 +1,12 @@
+img{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+    width: 500px;
+    height: 200px;
+}
+h1{
+    color: rgb(0, 0, 0);
+    float: right;
+}
