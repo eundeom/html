@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function payment() {
+        const num1 = Number(document.getElementById("num1").value);
+        const price1 = Number(document.getElementById("price1").value);
+        const num2 = Number(document.getElementById("num2").value);
+        const price2 = Number(document.getElementById("price2").value);
+        const total = num1 * price1 + num2 * price2;
+        document.getElementById("total").innerHTML =
+          "total price : " + total + " $";
+      }
+      function payment2() {
+        const num1 = Number(document.getElementById("num1").value);
+        const price1 = Number(document.getElementById("price1").value);
+        const num2 = Number(document.getElementById("num2").value);
+        const price2 = Number(document.getElementById("price2").value);
+        const total = num1 * price1 + num2 * price2;
+        document.getElementById("total").value = total;
+      }
+    </script>
+  </head>
+  <body>
+    <h2>Payment</h2>
+    <p>
+      item1 :
+      <input type="number" id="num1" name="num1" />
+      <input type="number" id="price1" name="price1" />$
+    </p>
+    <p>
+      item2 :
+      <input type="number" id="num2" name="num2" />
+      <input type="number" id="price2" name="price2" />$
+    </p>
+
+    <!-- <p id="total" onclick="payment()">
+      total price :
+      <input type="text" id="total" name="total" onclick="payment()" />
+    </p> -->
+
+    <p>
+      total price :
+      <input type="text" id="total" name="total" />
+      <input
+        type="button"
+        id="result"
+        name="result"
+        onclick="payment2()"
+        value="SUBMIT"
+      />
+    </p>
+  </body>
+</html>

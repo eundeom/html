@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function printstar() {
+        const num = Number(document.getElementById("num").value);
+        for (let i = 0; i < num; i++) {
+          document.write("* ");
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <p>enter the number : <input type="number" id="num" name="num" /></p>
+    <input type="button" value="SUBMIT" onclick="printstar()" />
+  </body>
+</html>
