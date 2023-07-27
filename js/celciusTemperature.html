@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Celsius Temperature</title>
+    <script>
+      function myfunc() {
+        let celciustemp = Number(document.getElementById("txt1").value); //25 degree celcius
+        resulttemp = celciustemp * 1.8 + 32;
+        document.write(resulttemp);
+      }
+    </script>
+  </head>
+  <body>
+    <form action="">
+      <label for="">Celsius Temperature</label>
+      <input type="number" id="txt1" name="txturl" />
+      <input type="button" id="btn" value="Submit" onclick="myfunc()" />
+    </form>
+  </body>
+</html>
