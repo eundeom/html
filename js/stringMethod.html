@@ -7,6 +7,7 @@
     <script>
       function myfunc() {
         const fn = document.getElementById("fname").value;
+        const ln = document.getElementById("lname").value;
 
         // for (let i = 0; i < fn.length; i += 2) {
         //   document.write(fn[i] + "<br>");
@@ -53,11 +54,19 @@
         // }
 
         // virali
-        if (fn[0] == fn[fn.length - 1]) {
-          document.write("same");
-        } else {
-          document.write("not same");
-        }
+        // if (fn[0] == fn[fn.length - 1]) {
+        //   document.write("same");
+        // } else {
+        //   document.write("not same");
+        // }
+
+        // document.write(fn + " " + ln[0].toUpperCase() + ".");
+
+        // full name
+        let splitname = fn.split(" "); // 나누기
+        let secn = splitname[1];
+        document.write(splitname[0]);
+        // document.write(splitname[0] + secn[0] + ".");
       }
     </script>
   </head>
@@ -65,7 +74,10 @@
     <form>
       <p>
         Enter you first name :
-        <input type="text" id="fname" />
+        <input type="text" id="fname" /><br />
+
+        <!-- Enter you last name :
+        <input type="text" id="lname" /> <br /> -->
         <input type="button" value="submit" onclick="myfunc()" />
       </p>
     </form>

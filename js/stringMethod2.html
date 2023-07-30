@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function myfunc() {
+        const fn = document.getElementById("fname").value;
+        let splitname = fn.split(" "); // 나누기
+        document.write(splitname[0] + " " + splitname[1][0] + ".");
+      }
+    </script>
+  </head>
+  <body>
+    <p>
+      Enter you full name :
+      <input type="text" id="fname" /><br />
+
+      <input type="button" value="submit" onclick="myfunc()" />
+    </p>
+  </body>
+</html>
