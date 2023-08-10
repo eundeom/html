@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <form class="form-inline">
+      <div class="row g-3 align-items-center">
+        <div class="col-auto">
+          <!-- label -->
+          <label for="inputPassword6" class="col-form-label">Password</label>
+        </div>
+        <div class="col-auto">
+          <!-- input -->
+          <input
+            type="password"
+            id="inputPassword6"
+            class="form-control"
+            aria-describedby="passwordHelpInline"
+          />
+        </div>
+        <!-- origin checkbox in HTML -->
+        <div>
+          <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+            <input type="checkbox" class="checkbox" name="1" id="btncheck1" autocomplete="off">
+            <label > Checkbox 1</label>
+          
+            <input type="checkbox" class="checkbox" name="1" id="btncheck2" autocomplete="off">
+            <label> Checkbox 2</label>
+          
+            <input type="checkbox" class="checkbox" name="1" id="btncheck3" autocomplete="off">
+            <label> Checkbox 3</label>
+          </div>
+        <!-- checkbox -->
+        <div>
+        <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+          <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+          <label class="btn btn-outline-primary" for="btncheck1">Checkbox 1</label>
+        
+          <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+          <label class="btn btn-outline-primary" for="btncheck2">Checkbox 2</label>
+        
+          <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+          <label class="btn btn-outline-primary" for="btncheck3">Checkbox 3</label>
+        </div>
+        <!-- in HTML -->
+        <div>
+          <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="radio" name="btnradio1" id="btnradio11" autocomplete="off" checked>
+            <label>Radio 1</label>
+          
+            <input type="radio" class="radio" name="btnradio1" id="btnradio22" autocomplete="off">
+            <label>Radio 2</label>
+          
+            <input type="radio" class="radio" name="btnradio1" id="btnradio33" autocomplete="off">
+            <label>Radio 3</label>
+          </div>
+          </div>
+          <!-- radio -->
+          <div>
+          <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+            <label class="btn btn-outline-primary" for="btnradio1">Radio 1</label>
+          
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btnradio2">Radio 2</label>
+          
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btnradio3">Radio 3</label>
+          </div>
+          </div>
+        </div>
+          <!-- ment -->
+          <span id="passwordHelpInline" class="form-text">
+            Must be 8-20 characters long.
+          </span>
+        </div>
+      </div>
+      <!-- button -->
+      <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </body>
+</html>
