@@ -1,0 +1,25 @@
+.main {
+  background-color: rgb(115, 255, 0);
+  font-size: xx-large;
+}
+@media (max-width: 800px) {
+  .main {
+    background-color: orange;
+  }
+}
+.main_child {
+  background-color: rgb(255, 89, 238);
+  margin-top: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.main_child2 {
+  font-size: 30px;
+  font-style: italic;
+  color: white;
+  width: 50%;
+  margin: 0 auto;
+  font-weight: 200;
+}/*# sourceMappingURL=main.css.map */
