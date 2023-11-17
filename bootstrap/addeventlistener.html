@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      //   document.addEventListener("mouseout", myfunc2());
+      document.addEventListener("keypress", myfunc2);
+      document.addEventListener("keyup", myfunc3);
+      document.addEventListener("mousedown", myfunc4);
+      document.addEventListener("focusin", myfunc5);
+      document.addEventListener("focusout", myfunc6);
+
+      function myfunc() {
+        document.getElementById("demo").innerHTML = document.URL;
+      }
+      //   function myfunc2() {
+      //     document.getElementById("demo").innerHTML = "key pressed!";
+      //   }
+      //   function myfunc3() {
+      //     document.getElementById("demo").innerHTML = "key released!";
+      //   }
+      //   function myfunc4() {
+      //     document.getElementById("demo").innerHTML = "mouse down!";
+      //   }
+      function myfunc5() {
+        document.getElementById("demo").innerHTML = "Focus in!";
+      }
+      function myfunc6() {
+        document.getElementById("demo").innerHTML = "Focus Out!";
+      }
+    </script>
+  </head>
+  <body>
+    <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt vitae
+      repellat at aperiam non vel illo harum alias aut, pariatur, repellendus
+      dignissimos recusandae itaque maxime, cum nulla quis delectus ratione?
+    </p>
+    <p id="demo"></p>
+    <button class="btn-info" onclick="myfunc()">Click Me</button>
+  </body>
+</html>

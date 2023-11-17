@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Even index</title>
+    <script>
+      function myfunc() {
+        const fn = document.getElementById("fname").value;
+        const ln = document.getElementById("lname").value;
+
+        // for (let i = 0; i < fn.length; i += 2) {
+        //   document.write(fn[i] + "<br>");
+        // }
+
+        // // String method
+        // document.write(fn.length + "<br>");
+
+        // // slice method
+        // let slicestr = fn.slice(0, 7); // (start, end(-1))
+        // document.write("slice string : " + slicestr + "<br>");
+
+        // // sub string
+        // let substr = fn.substring(1, 3);
+        // document.write("sub string : " + substr + "<br>");
+
+        // // replace
+        // let str1 = "Hi from Vancouver, Good morning Vancouver";
+        // let res = str1.replace("Vancouver", "Seoul");
+        // let resall = str1.replaceAll("Vancouver", "Seoul"); // all
+        // document.write(resall + "<br>");
+
+        // upper lower
+        // document.write(fn.toUpperCase() + "<br>");
+        // document.write(fn.toLowerCase() + "<br>");
+
+        // for (let i = 0; i < fn.length; i++) {
+        //   if (fn[i].isUpperCase()) {
+        //     document.write(fn[i].toLowerCase());
+        //   } else {
+        //     document.write(fn[i].toUpperCase());
+        //   }
+        // }
+
+        // for (let i = fn.length - 1; i >= 0; i--) {
+        //   document.write(fn[i]);
+        // }
+
+        // let result = fn.split("").reverse().join("");
+        // document.write(result);
+
+        // for (let i = fn.length - 1; i >= 0; i--) {
+        //   document.write(fn[i]);
+        // }
+
+        // virali
+        // if (fn[0] == fn[fn.length - 1]) {
+        //   document.write("same");
+        // } else {
+        //   document.write("not same");
+        // }
+
+        // document.write(fn + " " + ln[0].toUpperCase() + ".");
+
+        // full name
+        let splitname = fn.split(" "); // 나누기
+        let secn = splitname[1];
+        document.write(splitname[0]);
+        // document.write(splitname[0] + secn[0] + ".");
+      }
+    </script>
+  </head>
+  <body>
+    <form>
+      <p>
+        Enter you first name :
+        <input type="text" id="fname" /><br />
+
+        <!-- Enter you last name :
+        <input type="text" id="lname" /> <br /> -->
+        <input type="button" value="submit" onclick="myfunc()" />
+      </p>
+    </form>
+  </body>
+</html>

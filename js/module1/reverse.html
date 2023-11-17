@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function reverseNum() {
+        a = Number(document.getElementById("num1").value);
+        length = a.length;
+
+        let n = a;
+        let i = 0;
+        num = "";
+        //121
+        while (n % 10 == 0) {
+          console.log(n);
+          num[i++] = String(n % 10);
+          n %= 10;
+          console.log(n);
+        }
+        document.write(num);
+
+        // if (num == a) {
+        //   document.write("true");
+        // } else {
+        //   document.write("false");
+        // }
+      }
+    </script>
+  </head>
+  <body>
+    <p>
+      enter the number
+      <input type="number" id="num1" />
+      <input type="button" value="submit" onclick="reverseNum()" />
+    </p>
+  </body>
+</html>
