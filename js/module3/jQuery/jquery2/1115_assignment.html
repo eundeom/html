@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <style>
+      th,
+      td {
+        border: 1px solid mediumslateblue;
+      }
+      .head-btn {
+        height: 30px;
+      }
+      .row {
+        cursor: pointer;
+      }
+      .row:hover {
+        background-color: lightskyblue;
+      }
+      .active {
+        background-color: lightcoral;
+      }
+      input[type="number"] {
+        width: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="head-btn">
+      <button>DELETE</button>
+      <button>UP</button>
+      <button>DOWN</button>
+    </div>
+    <table>
+      <tbody>
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>price</th>
+          <th>amount</th>
+          <th>total</th>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2">total amount</td>
+          <td colspan="3"></td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+  <script type="module">
+    import Product from "./productClass.js";
+    import item from "./cartItem.js";
+
+    const productList = [];
+    let invoiceObj = null;
+    let total = 0;
+
+    const itemCollection = [];
+
+    const deleteDisable = () => {
+      if ($(".active").length > 0) {
+        $("button").eq(0).attr("disabled", false);
+      } else {
+        $("button").eq(0).attr("disabled", true);
+      }
+    };
+
+    const rowClick = (e) => {
+      $("table tbody").on("click", "tr", (e) => {
+        // press command key on Mac
+        if (e.metaKey) {
+          $(e.target).parent().addClass("active");
+        } else if ($(e.target).parent().hasClass("active")) {
+          $(e.target).parent().removeClass("active");
+        } else {
+          $(e.target).parent().removeClass("active");
+          $(e.target).parent().addClass("active");
+        }
+        deleteDisable();
+      });
+    };
+
+    const moveHandler = (e) => {
+      switch ($(e.target).text()) {
+        case "DELETE":
+          let reduceAmount = Number($($(".active td")[4]).text());
+          console.log(reduceAmount);
+          // total -= reduceAmount;
+          // $(".active").remove();
+          // $("tfoot tr td").eq(1).text(total.toFixed(2));
+          deleteDisable();
+          break;
+        case "UP":
+          if ($(".active").length == 1) {
+            if ($(".active")[0] == $(".row").first()[0]) {
+              $(".row").last().after($(".active"));
+            } else {
+              $(".active").prev().before($(".active"));
+            }
+          }
+          deleteDisable();
+
+          break;
+        case "DOWN":
+          if ($(".active").length == 1) {
+            if ($(".active")[0] == $(".row").last()[0]) {
+              $(".row").first().before($(".active"));
+            } else {
+              $(".active").next().after($(".active"));
+            }
+          }
+          deleteDisable();
+
+          break;
+      }
+    };
+
+    // should be located in invoiceClass method
+    const showData = (arr) => {
+      if (arr.length > 0) {
+        for (let item of arr) {
+          let tdTag = `<tr class="row"><td>${item.id}</td><td>${
+            item.pname
+          }</td><td>${item.price}</td><td>${
+            item.amount
+          }</td><td>${item.total.toFixed(2)}</td></tr>`;
+
+          $("tbody").append(tdTag);
+          total += item.total;
+        }
+        $("tfoot tr td").eq(1).text(total.toFixed(2));
+      }
+    };
+
+    const invoiceGen = () => {
+      // row 중복 생성되는 issue  (collection length가 늘어남에 따라 계속 붙어나감)
+      $("tbody").eq(2).empty();
+      $.each(itemCollection, (idx, itemObj) => {
+        $("tbody").eq(1).append(itemObj.toRow()); // toRow() method in item Class not product Class
+      });
+    };
+
+    const tableGen = (collection) => {
+      $.each(collection, (idx, product) => {
+        // make it easier
+        let tr = product.toRow();
+
+        let flag = false;
+
+        tr.on("click", (e) => {
+          let tmpValues = Object.values(product);
+          let itemObj = new item(tmpValues[0], tmpValues[1], tmpValues[2]);
+          // 똑같은 row 선택되어도 중복 생성됨 - 오버라이팅하기
+          for (let pro of productList) {
+            if (tmpValues[0] == itemCollection[idx].pid) {
+              let tmpObj = itemCollection[idx]; // this will be the item with same code
+              // tmpObj.amount += 1; // string + number = sting issu
+              tmpObj.amount++;
+              itemCollection[idx] = tmpObj;
+              flag = true;
+            }
+          }
+
+          itemCollection.push(itemObj);
+          // generating item collection table
+          invoiceGen();
+        });
+
+        $("tbody").eq(0).append(product.toRow());
+      });
+    };
+
+    const load = () => {
+      let loadPro = new Promise((result, reject) => {
+        $.getJSON("./invoice.json", (data, status, xhr) => {
+          if (status == "success") {
+            $.each(data, (idx, product) => {
+              let productObj = new Product(
+                product.id,
+                product.pname,
+                product.price,
+                product.amount
+              );
+              productList.push(productObj);
+              // productObj.toRow(); // promise 안에 getJson을 넣었기 때문에 then 뒤에 tableGen 으로 변경
+            });
+            result(Product);
+          } else {
+            reject(status);
+          }
+        });
+      }).then(tableGen, (reason) => {
+        alert(reason);
+      });
+    };
+
+    // $.getJSON("./invoice.json", (data, status, xhr) => {
+    //   if (status == "success") {
+    //     $.each(data, (idx, product) => {
+    //       let productObj = new Product(
+    //         product.id,
+    //         product.pname,
+    //         product.price,
+    //         product.amount,
+    //       );
+    //       productList.push(productObj);
+    //       productObj.toRow();
+    //     })
+    //   }
+    // })
+
+    $.getJSON("./invoice.json", (result) => {
+      $.each(result, (idx, value) => {
+        invoiceObj = new Product(
+          value.id,
+          value.pname,
+          value.price,
+          value.amount
+        );
+        productList.push(invoiceObj);
+      });
+      showData(productList);
+      rowClick();
+      deleteDisable();
+    });
+
+    $("button").on("click", moveHandler);
+  </script>
+</html>

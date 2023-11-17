@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="number" />
+    <input type="number" />
+    <button type="button" class="btn btn-outline-primary">calculate</button>
+    <h2>result :</h2>
+  </body>
+  <script>
+    const resFunc = (result) => {
+      document.querySelector("h2").innerText += result;
+    };
+    const rejFunc = (error) => {
+      alert(error);
+    };
+    const clickHandler = () => {
+      let promisObject = new Promise((result, reject) => {
+        const num1 = document.querySelectorAll("input")[0].value;
+        const num2 = document.querySelectorAll("input")[1].value;
+
+        if (num2 != 0) {
+          result(num1 / num2);
+        } else {
+          reject("second number shall not be zero.");
+        }
+      }).then(resFunc, rejFunc);
+    };
+    document.querySelector("button").addEventListener("click", clickHandler);
+  </script>
+</html>

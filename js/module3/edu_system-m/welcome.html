@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <title>Document</title>
+    <style>
+      table,
+      td,
+      tr {
+        border: solid 1px green;
+        text-align: center;
+      }
+      button {
+        margin: 0 0 10px 190px;
+      }
+      label {
+        font-size: large;
+        font-weight: 700;
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- welcome [fname] [lname] -->
+    <!-- <h1>Welcome <span></span> <span></span>!</h1> -->
+
+    <!-- bootstrap 이용해서 학생 보이게 하기 -->
+    <h1></h1>
+    <br />
+
+    <table>
+      <label>Course Info</label>
+      <button class="btn btn-outline-success" style="height: 40px">
+        submit
+      </button>
+      <thead>
+        <tr>
+          <td>✓</td>
+          <!-- <td>CID</td> -->
+          <td>Course</td>
+          <td>teacher name</td>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <br /><br />
+    <table>
+      <label>Student's Course</label>
+      <thead>
+        <tr>
+          <td>Course</td>
+          <td>teacher name</td>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </body>
+  <script type="module">
+    import student from "./classes/studentClass.js";
+    import teacher from "./classes/teacherClass.js";
+    let userObj = null;
+    let courseList = null;
+    let teacherList = null;
+    let fullCourse = [];
+
+    // course that student selected
+    const func = () => {
+      let stInfo = JSON.parse(sessionStorage.getItem("u")).stid;
+      const tbody = document.querySelectorAll("tbody")[1];
+      const info = JSON.parse(localStorage.getItem(stInfo) || "[]");
+      let tableTag = "";
+
+      info.forEach((course) => {
+        if (stInfo == course.stid) {
+          tableTag += `<tr>
+            <td>${course.cname}</td>
+            <td>${course.tname}</td>
+            </tr>`;
+        } else {
+          tableTag += "";
+        }
+      });
+      tbody.innerHTML = tableTag;
+    };
+
+    // submit button
+    document.querySelector("button").addEventListener("click", (e) => {
+      const checkboxes = document.querySelectorAll("input[type='checkbox']");
+      let stInfo = JSON.parse(sessionStorage.getItem("u")).stid;
+      let tmpArr = JSON.parse(localStorage.getItem(stInfo)) || [];
+
+      checkboxes.forEach(function (checkbox) {
+        if (checkbox.checked) {
+          for (let cr of fullCourse) {
+            if (
+              checkbox.value == cr.cid &&
+              userObj.constructor.name == "student"
+            ) {
+              let tmp = {
+                stid: stInfo,
+                cid: cr.cid,
+                cname: cr.cname,
+                tid: cr.tid,
+                tname: cr.tname,
+              };
+              tmpArr.push(tmp);
+            }
+          }
+        }
+        checkbox.checked = false;
+      });
+      localStorage.setItem(stInfo, JSON.stringify(tmpArr));
+      func();
+    });
+
+    // Course info (cid, cname, teacher lname, fname)
+    const onTable = () => {
+      for (let cr of fullCourse) {
+        const tr = document.createElement("tr");
+        const ch = document.createElement("input");
+        ch.type = "checkbox";
+        ch.value = cr.cid;
+        tr.appendChild(ch);
+
+        for (let cri in cr) {
+          if (cri == "tid" || cri == "cid") {
+            continue;
+          }
+          const td = document.createElement("td");
+          td.innerText = cr[cri];
+          tr.append(td);
+        }
+        document.querySelector("tbody").append(tr);
+      }
+    };
+
+    const tablePoper = () => {
+      const tbody = document.querySelectorAll("tbody")[0];
+      for (let course of fullCourse) {
+        tbody.append(course.toTr());
+      }
+    };
+
+    // iterate true courses
+    const coursePoper = () => {
+      for (let cr of courseList) {
+        for (let teach of teacherList) {
+          if (teach.tid == cr.tid) {
+            let tmpCourse = {
+              cid: cr.cid,
+              cname: cr.cname,
+              tname: teach.fname + " " + teach.lname,
+              tid: cr.tid,
+            };
+            fullCourse.push(tmpCourse);
+            break;
+          }
+        }
+      }
+      tablePoper();
+    };
+
+    // fail login
+    if (sessionStorage.getItem("u") == undefined) {
+      location.replace("login.html");
+    } else {
+      // info - login user
+      let tmpUser = JSON.parse(sessionStorage.getItem("u"));
+      if (Object.keys(tmpUser)[0] == "stid") {
+        userObj = new student(
+          tmpUser.stid,
+          tmpUser.fname,
+          tmpUser.lname,
+          tmpUser.email
+        );
+      } else {
+        userObj = new teacher(
+          tmpUser.tid,
+          tmpUser.fname,
+          tmpUser.lname,
+          tmpUser.email
+        );
+      }
+
+      document.querySelector(
+        "h1"
+      ).innerText = `Welcom ${userObj.fname} ${userObj.lname} !`;
+
+      //   course
+      const httpReq = new XMLHttpRequest();
+      httpReq.onload = () => {
+        if (httpReq.status == 200) {
+          courseList = JSON.parse(httpReq.response);
+        }
+      };
+      httpReq.open("GET", "./courseList.json");
+      httpReq.send();
+
+      //   teacher
+      const httpReqTeacher = new XMLHttpRequest();
+      httpReqTeacher.onload = () => {
+        if (httpReqTeacher.status == 200) {
+          teacherList = JSON.parse(httpReqTeacher.response);
+          func();
+          coursePoper();
+          onTable();
+        }
+      };
+      httpReqTeacher.open("GET", "./teacherList.json");
+      httpReqTeacher.send();
+    }
+  </script>
+</html>

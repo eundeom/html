@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script type="module">
+    import people from "./invioce.js";
+    let productList = [];
+
+    const tableGen = (collection) => {
+      $.each(collection, (idx, product) => {
+        let tr = prod.toRow();
+        tr.on("click", (e) => {
+          let tmpValues = object;
+        });
+        $("tbody").eq(0).append(product.toRow());
+      });
+    };
+
+    const load = () => {
+      let loadPro = new Promise((result, reject) => {
+        $.getJSON("./inVoice.json", (data, status, xhr) => {
+          if (status == "success") {
+            $.each(data, (idx, product) => {
+              let productObj = new Product(
+                product.id,
+                product.pname,
+                product.price,
+                product.amount
+              );
+              productList.push(productObj);
+              // productObj.toRow(); // promise 안에 getJson을 넣었기 때문에 then 뒤에 tableGen 으로 변경
+            });
+            result(Product);
+          } else {
+            reject(status);
+          }
+        });
+      }).then(tableGen, (reason) => {
+        alert(reason);
+      });
+    };
+  </script>
+</html>

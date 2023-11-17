@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // write a function which accepts 2 parameters as follow: arr (to get an array)
+    // order (to get the type of sort order [0,1] 0=Accending and 1=Decending) Can be optional
+    // This function shall sort the array using a new array and return the array to the main caller.
+    const bubbleSorting = (arr, order) => {
+      for (let a = 0; a <= arr.length - 1; a++) {
+        for (let b = a + 1; b <= arr.length - 1; b++) {
+          if (arr[a] < arr[b]) {
+            let tmp = arr[a];
+            arr[a] = arr[b];
+            arr[b] = tmp;
+          }
+        }
+      }
+      if (order == "1") {
+        // Decending 내림차순
+        return arr;
+      } else {
+        // Accending 오름차순
+        return arr.reverse();
+      }
+    };
+    const bubbleSorting2 = (arr, order) => {
+      for (let a = 0; a <= arr.length - 1; a++) {
+        for (let b = a + 1; b <= arr.length - 1; b++) {
+          if (order == "1") {
+            if (arr[a] < arr[b]) {
+              let tmp = arr[a];
+              arr[a] = arr[b];
+              arr[b] = tmp;
+            }
+          } else {
+            if (arr[a] > arr[b]) {
+              let tmp = arr[a];
+              arr[a] = arr[b];
+              arr[b] = tmp;
+            }
+          }
+        }
+      }
+      return arr;
+    };
+
+    const numbers = [10, 5, 3, 4, 7, 20, 1, 0, 12];
+    console.log(bubbleSorting(numbers, 1));
+    console.log(bubbleSorting2(numbers, 1));
+  </script>
+</html>

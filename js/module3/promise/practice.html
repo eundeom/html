@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>practice</title>
+  </head>
+  <body>
+    <input type="number" />
+    <input type="number" />
+    <button type="button">submit</button>
+    <h2>result :</h2>
+  </body>
+  <script>
+    const resFun = (result) => {
+      document.querySelector("h2").innerText += result;
+    };
+    const rejFun = (reason) => {
+      alert(reason);
+    };
+    const whenClick = () => {
+      const promiseObj = new Promise((resFunc, rejFunc) => {
+        let num1 = document.querySelectorAll("input")[0].value;
+        let num2 = document.querySelectorAll("input")[1].value;
+
+        if (num2 != 0) {
+          resFunc(num1 / num2);
+        } else {
+          rejFunc("num2 can't be zero.");
+        }
+      }).then(resFun, rejFun);
+    };
+
+    document.querySelector("button").addEventListener("click", whenClick);
+  </script>
+</html>

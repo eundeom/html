@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input />
+    <input type="number" />
+    <button type="button">Add student</button>
+    <table>
+      <thead>
+        <tr>
+          <td>Student name</td>
+          <td>Mark</td>
+        </tr>
+      </thead>
+      <tbody></tbody>
+      <tfoot>
+        <tr>
+          <td>Average of the class:</td>
+          <td></td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+  <script>
+    // when user clicked on the add student button,
+    // using a promise object get the student name and mark from the input box
+    // and add it to their table.
+    // You need to calculate the average of the class at the same time.
+    // if name is empty or mark is zero,
+    // change the background color of the empty input elements and show and alert message.
+
+    let tMark = 0; // mark 총 합
+    let tSt = 0; // 학생 수
+    let sum = 0;
+    const resFun = (name, mark) => {
+      let tr = document.createElement("tr");
+      for (let st of stInfo) {
+        let td = document.createElement("td");
+        td.innerText = st;
+        tr.appendChild(td);
+      }
+      document.querySelector("tbody").append(tr);
+      sum += parseFloat(stInfo[1]);
+      let avg = sum / document.querySelector("tbody").children.length;
+      document.querySelector("tfoot tr").children[1];
+
+      // average of class = 총 mark 합 / 학생수
+      // td 개수
+      //   tSt += 1;
+      //   tMark += mark;
+      //   let avg = tMark / tSt;
+
+      //   document.querySelector("tfoot tr td")[0].innerText = avg;
+    };
+    const rejFun = (idx) => {
+      document.querySelectorAll("input")[idx].style.backgroundColor = "red";
+      alert(reason);
+    };
+    const addStButton = (stInfo) => {
+      let errorFlag = false;
+      const promiseObj = new Promise((resFun, rejFun) => {
+        const stInfo = [];
+        stInfo[0] = document.querySelectorAll("input")[0].value;
+        stInfo[1] = document.querySelectorAll("input")[1].value;
+
+        for (let idx in stInfo) {
+          if (stInfo[idx] == "" || stInfo[idx] == 0) {
+            rejFun(stInfo);
+            errorFlag = true;
+          } else {
+            resFun(stInfo);
+          }
+        }
+
+        // student name, mark 에 표시하기
+        // const tbody = document.querySelector("tbody");
+        // let tr = document.createElement("tr");
+        // let td = document.createElement("td");
+        // td.innerText = name;
+        // tbody.appendChild(tr);
+        // tr.appendChild(td);
+        // td.innerText = mark;
+        // tbody.appendChild(tr);
+        // tr.appendChild(td);
+
+        // if (name == "" || mark == "" || mark == 0) {
+        //   // change the background color + alert message
+        //   rejFun("empty");
+        // } else {
+        //   // average of class
+        //   resFun(name, mark);
+        // }
+      }).then(resFun, rejFun);
+    };
+
+    document.querySelector("button").addEventListener("click", addStButton);
+  </script>
+</html>

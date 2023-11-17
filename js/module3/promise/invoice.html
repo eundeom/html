@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td></td>
+      </tr>
+    </table>
+  </body>
+  <script>
+    // Create a class for a product using the properties defined in the JSON file.
+    // Add a method to this class to help you with the delete and edit operation.
+    // generate a table using the JSON info and calculate the total price for each row.
+    // calculate the total of the invoice.
+    // add a delete button, deleting a product shall change the invoice total.
+    // add an edit button, and let the user edit the data which should reflect the table and total invoice accordingly. (Ultimate challenge)
+    const loadInvoice = (invoiceData) => {
+      console.log(invoiceData);
+    };
+    const errorFun = (msg) => {
+      alert(msg);
+    };
+    let loadPromise = new Promise((load, error) => {
+      let httpReq = new XMLHttpRequest();
+      httpReq.onload = () => {
+        if (httpReq.status == 200) load(httpReq.response);
+        else error(httpReq.statusText);
+      };
+      httpReq.open("GET", "invoice.json");
+      httpReq.send();
+    }).then(loadInvoice, errorFun);
+  </script>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul></ul>
+  </body>
+  <script>
+    const showMsg = (message) => {
+      alert(message);
+    };
+
+    // supposed to get number
+    // callback function : function을 parameter로 받아서 쓸 수 있음
+    const multiFunc = (num1, num2, whateverFunc) => {
+      whateverFunc(num1 * num2);
+    };
+
+    multiFunc(10, 2, showMsg);
+  </script>
+</html>
