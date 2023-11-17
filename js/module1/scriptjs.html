@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>script js</title>
+
+    <!-- script -->
+    <script>
+      function myfunction() {
+        const fname = document.getElementById("fname").value;
+        const lname = document.getElementById("lname").value;
+        //   printing
+        document.write(fname);
+        document.write(lname);
+      }
+    </script>
+  </head>
+
+  <body>
+    <p>first name <input type="text" id="fname" name="fname" /></p>
+    <p>last name <input type="text" id="lname" name="lname" /></p>
+    <input type="button" value="SUBMIT" onclick="myfunction()" />
+  </body>
+</html>

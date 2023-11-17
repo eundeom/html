@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gap of 3</title>
+    <script>
+      function gap3() {
+        a = Number(document.getElementById("num1").value);
+        b = Number(document.getElementById("num2").value);
+        for (let i = a + 3; i <= b; i += 3) {
+          document.write(i + "<br>");
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <p>
+      num 1 :
+      <input type="number" name="" id="num1" />
+    </p>
+    <p>
+      num 2 :
+      <input type="number" name="" id="num2" />
+    </p>
+    <input type="button" id="btn" onclick="gap3()" value="submit" />
+  </body>
+</html>

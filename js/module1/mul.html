@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      var resulttemp;
+      function myfunc() {
+        var num1 = Number(document.getElementById("txt1").value);
+
+        for (var i = 1; i <= 10; i++) {
+          document.write(num1 + "*" + i + "=" + num1 * i + "<br>");
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <form action="">
+      <label for="">Enter a number</label>
+      <input type="number" id="txt1" name="txturl" />
+      <input type="button" id="btn" value="Submit" onclick="myfunc()" />
+    </form>
+  </body>
+</html>

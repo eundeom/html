@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function func1() {
+        a = Number(document.getElementById("num1").value);
+        b = Number(document.getElementById("num2").value);
+
+        if (a == b) {
+          document.write("Both numbers are equal");
+        } else {
+          document.write("Both numbers are not equal");
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <p>
+      num 1 :
+      <input type="number" name="" id="num1" />
+    </p>
+    <p>
+      num 2 :
+      <input type="number" name="" id="num2" />
+    </p>
+    <input type="button" id="btn" onclick="func1()" value="submit" />
+  </body>
+</html>

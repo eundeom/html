@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function repeat() {
+        const num = Number(document.getElementById("num1").value);
+        for (var i = 0; i < num; i++) {
+          document.write(num + "<br>");
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <p>Enter the number <input type="number" id="num1" name="num1" /></p>
+    <input type="button" value="SUBMIT" onclick="repeat()" />
+  </body>
+</html>
