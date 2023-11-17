@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>High employee year > 10</button>
+    <button>Married</button>
+    <button>Has Children</button>
+    <table border="1">
+      <thead>
+        <tr>
+          <td>Employeeid</td>
+          <td>Name</td>
+          <td>Employee years</td>
+          <td>Married</td>
+          <td>Children</td>
+          <td id="sal">Salary</td>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </body>
+  <script type="module">
+    import employee from "./third.js";
+    let employeeList = null;
+    let fullEm = [];
+
+    // make a button for filtering
+
+    const employeeTen = document.querySelectorAll("button")[0];
+    const marriedPerson = document.querySelectorAll("button")[1];
+    const hasChild = document.querySelectorAll("button")[2];
+
+    // i don't know how to get a index of tr......
+
+    employeeTen.addEventListener("click", () => {
+      for (let emp of employeeList) {
+        console.log(emp.empyear);
+        if (emp.empyear === 10) {
+          document.querySelectorAll("tr")[1].style.backgroundColor = "yellow";
+          selectedTr.style.backgroundColor = "yellow";
+        }
+      }
+    });
+    marriedPerson.addEventListener("click", (e) => {
+      for (let emp of employeeList) {
+        if (emp.maried == true) {
+          for (let ind in emp) {
+            document.querySelectorAll("tr")[ind].style.backgroundColor =
+              "yellow";
+          }
+        }
+      }
+    });
+    marriedPerson.addEventListener("click", (e) => {
+      for (let emp of employeeList) {
+        if (emp.children == true) {
+          document.querySelectorAll("tr")[1].style.backgroundColor = "yellow";
+        }
+      }
+    });
+
+    const createEmployee = () => {
+      for (let em of employeeList) {
+        for (let emi in em) {
+          //   console.log(em);
+          let empObj = [
+            em.empid,
+            em.first_name + em.last_name,
+            em.empyear,
+            em.maried,
+            em.children,
+          ];
+          fullEm.push(empObj);
+          break;
+        }
+      }
+      onTable();
+    };
+
+    const onTable = () => {
+      const basicSalary = 40000;
+      const marriedSalary = basicSalary + basicSalary * 0.15;
+      const fourYearSalary = basicSalary + basicSalary * 0.1;
+
+      for (let em of employeeList) {
+        // console.log(em);
+        const tr = document.createElement("tr");
+        for (let emi in em) {
+          // salary !! - married: salary + 15%, less than 4 year: salary + 10%. has child: salary + 15%
+          const td = document.createElement("td");
+          if (em[emi] == em.last_name || em[emi] == em.email) {
+            continue;
+          }
+          if (
+            (em[emi] == em.maried && em[emi] == true) ||
+            (em[emi] == em.children && em[emi] == true)
+          ) {
+            td.innerText = "yes";
+          } else if (
+            (em[emi] == em.maried && em[emi] == false) ||
+            (em[emi] == em.children && em[emi] == false)
+          ) {
+            td.innerText = "no";
+          } else {
+            td.innerText = em[emi];
+          }
+
+          tr.append(td);
+        }
+        const td = document.createElement("td");
+        console.log(em.emyears);
+        if (em.maried == true || em.children == true) {
+          td.innerText = marriedSalary;
+        } else if (em.empyear < 4) {
+          td.innerText = fourYearSalary;
+        } else {
+          td.innerText = basicSalary;
+        }
+        tr.append(td);
+        document.querySelectorAll("tbody")[0].append(tr);
+      }
+    };
+
+    const httpReq = new XMLHttpRequest();
+    httpReq.onload = () => {
+      if (httpReq.status == 200) {
+        employeeList = JSON.parse(httpReq.response);
+
+        // onTable();
+        createEmployee();
+      }
+    };
+    httpReq.open("GET", "./emplistV3.json");
+    httpReq.send();
+  </script>
+</html>

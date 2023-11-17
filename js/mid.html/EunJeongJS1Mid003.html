@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table border="1">
+      <thead>
+        <tr>
+          <td>Employeeid</td>
+          <td>first_name</td>
+          <td>last_name</td>
+          <td>email</td>
+          <td>years</td>
+          <td>married</td>
+          <td>children</td>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </body>
+  <script type="module">
+    import employee from "./third.js";
+    let employeeList = null;
+
+    const onTable = () => {
+      for (let em of employeeList) {
+        const tr = document.createElement("tr");
+        for (let emi in em) {
+          console.log(em[emi]);
+          const td = document.createElement("td");
+          td.innerText = em[emi];
+          tr.append(td);
+        }
+        document.querySelectorAll("tbody")[0].append(tr);
+      }
+    };
+
+    const httpReq = new XMLHttpRequest();
+    httpReq.onload = () => {
+      if (httpReq.status == 200) {
+        employeeList = JSON.parse(httpReq.response);
+
+        onTable();
+      }
+    };
+    httpReq.open("GET", "./emplistV3.json");
+    httpReq.send();
+  </script>
+</html>
