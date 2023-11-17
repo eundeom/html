@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // Using the provided code for generating a table, change the codes so that it will change the background color of each cell in the table considering the following rules:
+    // Odd numbers having a yellow background
+    // Even numbers having a blue background
+
+    ///////////Multi-dimension array
+    const students = [
+      [
+        [3, 4, 5],
+        [3, 2, 1],
+      ],
+      [
+        [5, 6, 10],
+        [10, 5, 12],
+      ],
+    ];
+    for (let i = 0; i < students.length; i++) {
+      // for in
+      let table = document.createElement("table");
+      table.border = 1;
+      for (let j = 0; j < students[i].length; j++) {
+        // for in
+        let tr = document.createElement("tr");
+        for (let k = 0; k < students[i][j].length; k++) {
+          // for of
+          let td = document.createElement("td");
+          td.innerText = students[i][j][k];
+          if (students[i][j][k] % 2 === 0) {
+            td.style.backgroundColor = "blue";
+          } else {
+            td.style.backgroundColor = "yellow";
+          }
+          tr.appendChild(td);
+        }
+        table.appendChild(tr);
+      }
+      document.querySelector("body").appendChild(table);
+    }
+  </script>
+</html>

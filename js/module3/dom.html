@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        background-color: azure;
+        border: 1px solid blue;
+        width: 50px;
+        height: 50px;
+        border-radius: 5px;
+        padding: 10px;
+        margin-top: 5px;
+        font-size: xx-large;
+      }
+      .box:hover {
+        cursor: pointer;
+        background-color: aquamarine;
+      }
+      .active {
+        background-color: blue;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <header><button type="button">Add</button></header>
+    <header><button type="button" disabled>remove</button></header>
+    <header><button type="button" disabled>Up</button></header>
+    <header><button type="button" disabled>Down</button></header>
+    <main></main>
+  </body>
+  <script>
+    // remove up down 버튼 disabled
+    const btDisable = () => {
+      for (let i of [1, 2, 3]) {
+        document.querySelectorAll("button")[i].setAttribute("disabled", "");
+      }
+    };
+
+    const findMaxValue = () => {
+      let maxValue = 0;
+      for (let box of document.querySelectorAll(".box")) {
+        if (maxValue < parseInt(box.innerText)) {
+          maxValue = parseInt(box.innerText);
+        }
+      }
+      return maxValue;
+    };
+
+    let selectedItem = null;
+
+    document.querySelectorAll("button")[0].addEventListener("click", (e) => {
+      // Add
+      let box = document.createElement("div");
+      box.classList.add("box");
+      box.innerText = findMaxValue() + 1;
+      if (selectedItem != null) {
+        let main = document.querySelector("main");
+        let nextSibling = selectedItem.nextElementSibling;
+        main.insertBefore(box, nextSibling);
+      } else {
+        document.querySelector("main").appendChild(box);
+      }
+      box.addEventListener("click", (e) => {
+        if (selectedItem != null) {
+          document.querySelector(".active").classList.remove("active");
+        }
+        if (e.target == selectedItem) {
+          selectedItem = null;
+          btDisable();
+        } else {
+          e.target.classList.add("active");
+          selectedItem = e.target;
+          for (let bt of document.querySelectorAll("button")) {
+            bt.removeAttribute("disabled");
+          }
+        }
+      });
+    });
+
+    document.querySelectorAll("button")[1].addEventListener("click", () => {
+      selectedItem.remove();
+      selectedItem = null;
+      btDisable();
+    });
+    document.querySelectorAll("button")[2].addEventListener("click", () => {
+      let main = document.querySelector("main");
+      main.insertBefore(selectedItem, selectedItem.previousElementSibling);
+    });
+    document.querySelectorAll("button")[3].addEventListener("click", () => {
+      let main = document.querySelector("main");
+      let nextChild = selectedItem.nextElementSibling;
+      if (nextChild == null) {
+        main.insertBefore(selectedItem, main.firstElementChild);
+      } else {
+        main.insertBefore(selectedItem, nextChild.nextElementSibling);
+      }
+    });
+  </script>
+</html>

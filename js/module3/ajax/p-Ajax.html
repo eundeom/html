@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table,
+      td,
+      tr {
+        border: solid 1px rosybrown;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <td>ID</td>
+          <td>pname</td>
+          <td>price</td>
+          <td>amount</td>
+        </tr>
+      </thead>
+      <tbody></tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">Invoice</td>
+          <td colspan="2"></td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+  <script type="module">
+    import product from "./classes/productClass.js"; // script에 type="module"이 있어야 import됨
+    let products = new Array();
+    let sum = 0;
+
+    const onTable = () => {
+      for (let pr of products) {
+        const tr = document.createElement("tr");
+        for (let prop in pr) {
+          const td = document.createElement("td");
+          td.innerText = pr[prop];
+          tr.append(td);
+        }
+        document.querySelector("tbody").append(tr);
+
+        // total column 추가하기
+        const td = document.createElement("td");
+        sum += parseInt(pr.total());
+        td.innerText = pr.total();
+        tr.append(td);
+      }
+      document.querySelectorAll("tfoot tr td")[1].append(sum);
+    };
+
+    ///////   XMLHttpRequest  ////////
+    // 객체 생성
+    const httpReq = new XMLHttpRequest();
+    // 데이터 불러오기
+    httpReq.onload = () => {
+      //   console.log(JSON.parse(httpReq.responseText));
+
+      for (let pr of JSON.parse(httpReq.response)) {
+        //  product 클래스의 새 인스턴스를 생성
+        //  product 클래스의 생성자를 pr.id, pr.pname, pr.price, pr.amount 네 개의 매개변수와 함께 호출
+        //  Object productObj에 데이터가 담겨져 있음
+        let productObj = new product(pr.id, pr.pname, pr.price, pr.amount);
+
+        //  새로운 객체를 생성하여 Array - products에 Object productObj를 저장
+        products.push(productObj);
+      }
+
+      onTable();
+    };
+    httpReq.open("GET", "invoice.json", true);
+    httpReq.send();
+  </script>
+</html>

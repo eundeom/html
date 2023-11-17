@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" />
+  </body>
+  <script>
+    // when user click the input box
+    const inputBox = document.querySelectorAll("input")[0];
+
+    const highLight = () => {
+      inputBox.style.backgroundColor = "red";
+    };
+
+    const fout = () => {
+      inputBox.style.backgroundColor = none;
+    };
+
+    inputBox.addEventListener("click", highLight);
+    inputBox.addEventListener("focusout", fout);
+
+    // let clickFlag = false;
+    //   if (clickFlage) {
+    //     inputBox.style.backgroundColor = "red";
+    //   } else {
+    //     inputBox.style.backgroundColor = none;
+    //   }
+  </script>
+</html>

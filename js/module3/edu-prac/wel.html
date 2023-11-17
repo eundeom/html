@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Welcome</h1>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Course ID</th>
+          <th>Course Name</th>
+          <th colspan="2">Instructor</th>
+          <th>Options</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+      <tfoot></tfoot>
+    </table>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+  <script type="module">
+    import student from "./class/studentClass.js";
+    import course from "./class/courseClass.js";
+
+    let courseList = null;
+    let teacherList = null;
+    let fullCourse = [];
+    let studentObj = null;
+
+    const tablePoper = () => {
+      const tbody = document.querySelector("tbody")[0];
+      const stid = JSON.parse(sessionStorage.getItem("u")).stid;
+      const sc = JSON.parse(localStorage.getItem("sc"));
+      let preSelectedCourse = [];
+      for (let idx in sc) {
+        if (Object.keys(sd[idx])[0] == stid) {
+          preSelectedCourse = Object.values(sc[idx])[0];
+          break;
+        }
+      }
+      for (let course of fullCourse) {
+        if (preSelectedCourse.indexOf(course.cid) == -1) {
+          tbody.append(course.toTr());
+        }
+      }
+    };
+    const coursePoper = () => {
+      for (let cr of courseList) {
+        for (let tch of teacherList) {
+          if (cr.tid == tch.tid) {
+            let courseObj = new course(cr.cid, cr.cname, tch.fname, tch.lname);
+          }
+          fullCourse.append(courseObj);
+          break;
+        }
+      }
+      tablePoper();
+    };
+
+    if (sessionStorage.getItem("u") == undefined) {
+      location.replace("login.html");
+    } else {
+      // success to login
+      let tmpStu = sessionStorage.getItem("u");
+      // tmpStu = JSON.parse(
+      //   CryptoJS.AES.decrypt(tmpStu, "SecretKey").toString(CryptoJS.enc.Utf8)
+      // );
+      console.log(tmpStu);
+
+      studentObj = new student(
+        tmpStu.stid,
+        tmpStu.fname,
+        tmpStu.lname,
+        tmpStu.email
+      );
+
+      const httpReq = new XMLHttpRequest();
+      httpReq.onload = () => {
+        if (httpReq.status == 200) {
+          courseList = JSON.parse(httpReq.response);
+        }
+      };
+      httpReq.open("GET", "./courseList.json");
+      httpReq.send();
+
+      const httpReqt = new XMLHttpRequest();
+      httpReqt.onload = () => {
+        if (httpReqt.status == 200) {
+          teacherList = JSON.parse(httpReqt.response);
+          coursePoper();
+        }
+      };
+      httpReqt.open("GET", "./teacherList.json");
+      httpReqt.send();
+    }
+  </script>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <title>Document</title>
+    <style>
+      .box {
+        background-color: azure;
+        border: 1px solid blue;
+        border-radius: 5px;
+        width: 50px;
+        height: 50px;
+      }
+      .box:hover {
+        cursor: pointer;
+        background-color: aqua;
+      }
+      /* 누르면 */
+      .active {
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Add</button>
+    <button disabled>Delete</button>
+    <button>UP</button>
+    <button>DOWN</button>
+    <main></main>
+  </body>
+  <script>
+    const deleteDis = () => {
+      // active class를 가진 element 길이,,
+      if ($(".active").length > 0) {
+        $("button").eq(1).attr("disabled", false);
+      } else {
+        // 선택된 게 없으면 disabled
+        $("button").eq(1).attr("disabled", true);
+      }
+    };
+    const boxClick = (e) => {
+      //   e.ctrlKey -> e.metaKey 로 바꾸니 command 누르니까 된당!
+      if (e.metaKey) {
+        $(e.target).addClass("active");
+      } else if ($(e.target).hasClass("active")) {
+        $(e.target).removeClass("active");
+      } else {
+        // reset all the button and select box
+        $(".box").removeClass("active");
+        $(e.target).addClass("active");
+      }
+      deleteDis();
+    };
+
+    const moveHandler = (e) => {
+      console.log($(".box").last()[0]);
+      // 현재 클릭하는 (e.target) 버튼의 text
+      switch ($(e.target).text()) {
+        case "UP":
+          if ($(".active").length == 1) {
+            // 첫 번째 박스이면
+            if ($(".active")[0] == $(".box").first()[0]) {
+              $(".box").last().after($(".active"));
+            } else {
+              $(".active").prev().before($(".active"));
+            }
+          }
+          break;
+        case "DOWN":
+          if ($(".active").length == 1) {
+            // active 박스가 마지막 박스이면
+            if ($(".active")[0] == $(".box").last()[0]) {
+              $(".box").first().before($(".active"));
+            } else {
+              $(".active").next().after($(".active"));
+            }
+          }
+          break;
+      }
+    };
+    // add button
+    $("button")
+      .eq(0)
+      .on("click", () => {
+        let box = $("<div></div>"); // create div element
+        box.addClass("box"); // add class to new div
+        box.on("click", boxClick); // box click function 왜 여기서 해야될까여..
+        $("main").append(box);
+        // box.appendTo("main");
+      });
+
+    const deleteHandler = () => {
+      //   $(".box").last();
+      $(".active").remove();
+      deleteDis();
+    };
+    // click all the buttons
+    $("button").on("click", moveHandler);
+    // delete button
+    $("button").eq(1).on("click", deleteHandler);
+  </script>
+</html>

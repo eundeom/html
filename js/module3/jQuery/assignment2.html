@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <style>
+      table {
+        text-align: center;
+      }
+      table tbody tr:hover {
+        background-color: burlywood;
+      }
+      .active {
+        background-color: aquamarine;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <button disabled>DELETE</button>
+    <button disabled>UP</button>
+    <button disabled>DOWN</button>
+
+    <table border="1" class="peopleTable">
+      <thead>
+        <tr>
+          <td>id</td>
+          <td>name</td>
+          <td>price</td>
+          <td>amount</td>
+          <td>total</td>
+        </tr>
+      </thead>
+      <tbody></tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2">total amount :</td>
+          <td colspan="3"></td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+
+  <script type="module">
+    import peaple from "./invioce.js";
+
+    const httpReq = new XMLHttpRequest();
+    let invoiceList = new Array();
+    let ppl = new Array();
+    let sum = 0;
+
+    const onTable = () => {
+      for (let pp of ppl) {
+        const tr = document.createElement("tr");
+        for (let idx in pp) {
+          const td = document.createElement("td");
+          td.innerText = pp[idx];
+          tr.append(td);
+        }
+        document.querySelector("tbody").append(tr);
+        // total
+        const td = document.createElement("td");
+        sum += parseInt(pp.total());
+        td.innerText = pp.total();
+        tr.append(td);
+      }
+      document.querySelectorAll("tfoot tr td")[1].append(sum);
+    };
+
+    const tableClick = (e) => {};
+
+    const deleteDis = () => {
+      if ($(".active").length == 1) {
+        $("button").eq(1).attr("disabled", false);
+        $("button").eq(2).attr("disabled", false);
+
+        $("button").eq(0).attr("disabled", false);
+      } else if ($(".active").length > 1) {
+        $("button").eq(0).attr("disabled", false);
+
+        $("button").eq(1).attr("disabled", true);
+        $("button").eq(2).attr("disabled", true);
+      } else {
+        // 선택된 게 없으면 disabled
+        $("button").eq(0).attr("disabled", true);
+      }
+    };
+
+    $("table tbody").on("click", "tr", function (e) {
+      if (e.metaKey) {
+        $(e.target).parent().addClass("active");
+      } else if ($(e.target).hasClass("active")) {
+        $(e.target).parent().removeClass("active");
+      } else {
+        $("table tbody tr").removeClass("active");
+        $(e.target).parent().addClass("active");
+      }
+
+      //선택한 td의 첫번째 data
+      //   let stid = $(this).find("td:eq(0)").text();
+      //   let name = $(this).find("td:eq(1)").text();
+      //   let price = $(this).find("td:eq(2)").text();
+      //   let amount = $(this).find("td:eq(3)").text();
+      //   let total = $(this).find("td:eq(4)").text();
+
+      deleteDis();
+    });
+
+    const moveHandler = (e) => {
+      switch ($(e.target).text()) {
+        case "DELETE":
+          let arr = [];
+          arr.push($(".active"));
+          for (let ar of arr) {
+            for (let id of ar) {
+              // id의 4번째 td에 있는 값 가져오기
+              let total = Number.parseFloat($(id).find("td:eq(4)").text());
+              let totalAmount =
+                Number.parseFloat($("table tfoot tr td:eq(1)").text()) - total;
+              $("table tfoot tr td:eq(1)").html(totalAmount);
+            }
+          }
+          // delete the row : active인 row 전부 삭제
+          $(".active").remove();
+          deleteDis();
+          break;
+        case "UP":
+          // 선택된 row가 있으면
+          if ($(".active").length == 1) {
+            if ($(".active")[0] == $("table tbody tr").first()[0]) {
+              $("table tbody tr").last().after($(".active"));
+            } else {
+              $(".active").prev().before($(".active"));
+            }
+          }
+          break;
+        case "DOWN":
+          if ($(".active").length == 1) {
+            if ($(".active")[0] == $("table tbody tr").last()[0]) {
+              $("table tbody tr").first().before($(".active"));
+            } else {
+              $(".active").next().after($(".active"));
+            }
+          }
+          break;
+      }
+    };
+
+    $("button").on("click", moveHandler);
+
+    $.getJSON("./invoice.json", (data, status, xhr) => {
+      if (status == "success") {
+        $.each(data, (idx, product) => {
+          let peopleObj = new people(
+            product.id,
+            product.pname,
+            product.price,
+            product.amount
+          );
+          invoiceList.push(peopleObj);
+        });
+      }
+    });
+
+    httpReq.onload = () => {
+      if (httpReq.status == 200) {
+        for (let pl of JSON.parse(httpReq.response)) {
+          let peopleObj = new people(pl.id, pl.pname, pl.price, pl.amount);
+          ppl.push(peopleObj);
+        }
+        // console.log(peopleObj);
+        onTable();
+      }
+    };
+    httpReq.open("GET", "./invoice.json");
+    httpReq.send();
+  </script>
+</html>

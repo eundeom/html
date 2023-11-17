@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid palegreen;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <td>ID</td>
+          <td>Product Name</td>
+          <td>Price</td>
+          <td>Amount</td>
+        </tr>
+      </thead>
+      <tbody></tbody>
+      <tfoot>
+        <td colspan="3">Total Invoice:</td>
+        <td colspan="2"></td>
+      </tfoot>
+    </table>
+  </body>
+  <!-- <script src="./classes/productClass.js"></script> -->
+  <script type="module">
+    import product from "./classes/productClass.js";
+    let products = new Array();
+    let sum = 0;
+    // 값을 테이블에 불러오는 함수
+    const tablePop = () => {
+      for (let pr of products) {
+        const tr = document.createElement("tr");
+        for (let prop in pr) {
+          // for in : index
+          const td = document.createElement("td");
+          td.innerText = pr[prop]; // index
+          tr.append(td); // 요소 끝에 삽입
+        }
+        document.querySelector("tbody").append(tr);
+
+        const td = document.createElement("td");
+        sum += parseInt(pr.total());
+        td.innerText = pr.total();
+        tr.append(td);
+      }
+      // id 대신 쓸 수 있는 법
+      document.querySelectorAll("tfoot tr td")[1].append(sum);
+    };
+
+    // Create an WMLHttpRequest object
+    const httpReq = new XMLHttpRequest();
+
+    // Define a callback function
+    httpReq.onload = () => {
+      // 전체 출력
+      // console.log(JSON.parse(httpReq.responseText));
+
+      // for (let pr of JSON.parse(httpReq.response)) {
+      //   products.push(pr);
+      // }
+
+      for (let pr of JSON.parse(httpReq.response)) {
+        let productObj = new product(pr.id, pr.pname, pr.price, pr.amount);
+        products.push(productObj);
+      }
+      console.log(products);
+
+      // table에 불러오기
+      tablePop();
+    };
+
+    // send a request
+    httpReq.open("GET", "invoice.json", true);
+    httpReq.send();
+  </script>
+</html>

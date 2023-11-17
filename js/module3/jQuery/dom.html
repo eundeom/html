@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- cdn js jquery -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <h1>hi this is h1</h1>
+    <input type="text" />
+    <input type="text" />
+    <input type="text" />
+    <input type="text" />
+    <input type="text" />
+    <input type="text" />
+    <input type="text" />
+    <input type="text" />
+  </body>
+  <script>
+    // using jqeury HTML GET method --- SET method: h1.innerText = "This is jQuery";
+    // console.log($("h1").text("This is jQuery"));
+    // $("input")[2].value = "hi";
+    // console.log($($("input")[2]).val());
+    // $("input").css("background-color", "pink");
+    // $("div input").css("background-color", "green");
+
+    // const clickHandler = (e) => {
+    //   console.log(e);
+    // };
+    // $("input").on({
+    //   keypress: clickHandler,
+    //   click: clickHandler,
+    // });
+
+    // e : event가 전달된 객체에 대한 참조
+    // e.type & e.target 중요!!
+    const focusHandler = (e) => {
+      // array
+      //   console.log($(e.target));
+      //   console.log($(e.target).parent().children("input").first());
+
+      //   console.log($(e.target).next()); // next element
+      //   console.log($(e.target).prev()); // prev element
+
+      console.log($(e.target).eq(0));
+      //   console.log($(e.target).eq(0).css("display", "none")); //using eq instead index number
+
+      //   console.log($(e.target)[0]);
+      //   console.log($(e.target).parent().children("input").first()[0]);
+
+      //   if (
+      //     $(e.target)[0] === $(e.target).parent().children("input").first()[0]
+      //   ) {
+      //   }
+      //   if (e.type == "focus") {
+      //     $(e.target).css("background-color", "yellow");
+      // we use $(e.target) access to jquery object
+      // first() => returns the first element of the selected elements.
+      //   console.log($(e.target).first());
+      // console.log($(e.target).parent());
+      // console.log($(e.target).children());
+      // console.log($(e.target).parent().children("input").last());
+      //   } else if (e.type == "blur") {
+      //     $(e.target).css("background-color", "white");
+      //   }
+    };
+
+    $("input").on({
+      focus: focusHandler,
+      blur: focusHandler,
+    });
+  </script>
+</html>
