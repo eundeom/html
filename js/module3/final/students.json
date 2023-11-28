@@ -1,0 +1,602 @@
+[
+  {
+    "studentID": 20231124,
+    "first_name": "Frank",
+    "last_name": "Dyhouse",
+    "final_grade": 32.68
+  },
+  {
+    "studentID": 20231125,
+    "first_name": "Adrian",
+    "last_name": "Cramp",
+    "final_grade": 44.43
+  },
+  {
+    "studentID": 20231126,
+    "first_name": "Sheffield",
+    "last_name": "Croote",
+    "final_grade": 90.09
+  },
+  {
+    "studentID": 20231127,
+    "first_name": "Sigrid",
+    "last_name": "Waulker",
+    "final_grade": 79.67
+  },
+  {
+    "studentID": 20231128,
+    "first_name": "Yance",
+    "last_name": "Kemish",
+    "final_grade": 45.05
+  },
+  {
+    "studentID": 20231129,
+    "first_name": "Allyce",
+    "last_name": "Freshwater",
+    "final_grade": 15.68
+  },
+  {
+    "studentID": 20231130,
+    "first_name": "Bobbee",
+    "last_name": "Benyon",
+    "final_grade": 74.23
+  },
+  {
+    "studentID": 20231131,
+    "first_name": "Hirsch",
+    "last_name": "Whitehorne",
+    "final_grade": 73.81
+  },
+  {
+    "studentID": 20231132,
+    "first_name": "Saxe",
+    "last_name": "Gergher",
+    "final_grade": 45.45
+  },
+  {
+    "studentID": 20231133,
+    "first_name": "Horacio",
+    "last_name": "Bingham",
+    "final_grade": 63.34
+  },
+  {
+    "studentID": 20231134,
+    "first_name": "Kelci",
+    "last_name": "Charteris",
+    "final_grade": 55.17
+  },
+  {
+    "studentID": 20231135,
+    "first_name": "Cosetta",
+    "last_name": "Strickett",
+    "final_grade": 56.08
+  },
+  {
+    "studentID": 20231136,
+    "first_name": "Andi",
+    "last_name": "Brimacombe",
+    "final_grade": 57.39
+  },
+  {
+    "studentID": 20231137,
+    "first_name": "Louisa",
+    "last_name": "Pittway",
+    "final_grade": 76.87
+  },
+  {
+    "studentID": 20231138,
+    "first_name": "Marsiella",
+    "last_name": "Taree",
+    "final_grade": 68.74
+  },
+  {
+    "studentID": 20231139,
+    "first_name": "Gualterio",
+    "last_name": "Easterfield",
+    "final_grade": 24.06
+  },
+  {
+    "studentID": 20231140,
+    "first_name": "Nada",
+    "last_name": "Mussen",
+    "final_grade": 65.19
+  },
+  {
+    "studentID": 20231141,
+    "first_name": "Freida",
+    "last_name": "Shutler",
+    "final_grade": 53.63
+  },
+  {
+    "studentID": 20231142,
+    "first_name": "Noel",
+    "last_name": "Shilito",
+    "final_grade": 54.24
+  },
+  {
+    "studentID": 20231143,
+    "first_name": "Blinni",
+    "last_name": "Machen",
+    "final_grade": 48.11
+  },
+  {
+    "studentID": 20231144,
+    "first_name": "Vincenty",
+    "last_name": "Kock",
+    "final_grade": 90.92
+  },
+  {
+    "studentID": 20231145,
+    "first_name": "Abigael",
+    "last_name": "Maddyson",
+    "final_grade": 27.56
+  },
+  {
+    "studentID": 20231146,
+    "first_name": "Dominica",
+    "last_name": "Grout",
+    "final_grade": 21.57
+  },
+  {
+    "studentID": 20231147,
+    "first_name": "Conni",
+    "last_name": "Leban",
+    "final_grade": 79.04
+  },
+  {
+    "studentID": 20231148,
+    "first_name": "Jennie",
+    "last_name": "Benez",
+    "final_grade": 22.42
+  },
+  {
+    "studentID": 20231149,
+    "first_name": "Joyan",
+    "last_name": "Teideman",
+    "final_grade": 82.44
+  },
+  {
+    "studentID": 20231150,
+    "first_name": "Miner",
+    "last_name": "Ferbrache",
+    "final_grade": 94.85
+  },
+  {
+    "studentID": 20231151,
+    "first_name": "Worth",
+    "last_name": "Mc Faul",
+    "final_grade": 22.07
+  },
+  {
+    "studentID": 20231152,
+    "first_name": "Frans",
+    "last_name": "Franchi",
+    "final_grade": 78.72
+  },
+  {
+    "studentID": 20231153,
+    "first_name": "Ethel",
+    "last_name": "Bosward",
+    "final_grade": 78.29
+  },
+  {
+    "studentID": 20231154,
+    "first_name": "Kingsley",
+    "last_name": "Honsch",
+    "final_grade": 53.2
+  },
+  {
+    "studentID": 20231155,
+    "first_name": "Van",
+    "last_name": "Whiteway",
+    "final_grade": 35.69
+  },
+  {
+    "studentID": 20231156,
+    "first_name": "Giralda",
+    "last_name": "Hasel",
+    "final_grade": 46.99
+  },
+  {
+    "studentID": 20231157,
+    "first_name": "Yves",
+    "last_name": "Duffree",
+    "final_grade": 45.01
+  },
+  {
+    "studentID": 20231158,
+    "first_name": "Saul",
+    "last_name": "Wager",
+    "final_grade": 69.13
+  },
+  {
+    "studentID": 20231159,
+    "first_name": "Virgie",
+    "last_name": "Piser",
+    "final_grade": 56.26
+  },
+  {
+    "studentID": 20231160,
+    "first_name": "Andonis",
+    "last_name": "Jandak",
+    "final_grade": 11.52
+  },
+  {
+    "studentID": 20231161,
+    "first_name": "Myrvyn",
+    "last_name": "Warburton",
+    "final_grade": 23.89
+  },
+  {
+    "studentID": 20231162,
+    "first_name": "Neda",
+    "last_name": "Drei",
+    "final_grade": 54.02
+  },
+  {
+    "studentID": 20231163,
+    "first_name": "Quentin",
+    "last_name": "Mixhel",
+    "final_grade": 27.19
+  },
+  {
+    "studentID": 20231164,
+    "first_name": "Doretta",
+    "last_name": "Simmonett",
+    "final_grade": 37.4
+  },
+  {
+    "studentID": 20231165,
+    "first_name": "Randal",
+    "last_name": "Tranmer",
+    "final_grade": 63.51
+  },
+  {
+    "studentID": 20231166,
+    "first_name": "Inger",
+    "last_name": "Mackerness",
+    "final_grade": 59.08
+  },
+  {
+    "studentID": 20231167,
+    "first_name": "Erasmus",
+    "last_name": "Morhall",
+    "final_grade": 98.36
+  },
+  {
+    "studentID": 20231168,
+    "first_name": "Abbey",
+    "last_name": "Abdon",
+    "final_grade": 80.74
+  },
+  {
+    "studentID": 20231169,
+    "first_name": "Cirillo",
+    "last_name": "Burchmore",
+    "final_grade": 79.2
+  },
+  {
+    "studentID": 20231170,
+    "first_name": "Kean",
+    "last_name": "Bowry",
+    "final_grade": 71.07
+  },
+  {
+    "studentID": 20231171,
+    "first_name": "Delano",
+    "last_name": "Mantha",
+    "final_grade": 95.76
+  },
+  {
+    "studentID": 20231172,
+    "first_name": "Beverlie",
+    "last_name": "Effemy",
+    "final_grade": 12.22
+  },
+  {
+    "studentID": 20231173,
+    "first_name": "Buffy",
+    "last_name": "Wildgoose",
+    "final_grade": 40.67
+  },
+  {
+    "studentID": 20231174,
+    "first_name": "Rickert",
+    "last_name": "Beig",
+    "final_grade": 28.13
+  },
+  {
+    "studentID": 20231175,
+    "first_name": "Katy",
+    "last_name": "Sproston",
+    "final_grade": 96.73
+  },
+  {
+    "studentID": 20231176,
+    "first_name": "Farrah",
+    "last_name": "Spilsbury",
+    "final_grade": 76.79
+  },
+  {
+    "studentID": 20231177,
+    "first_name": "Cecily",
+    "last_name": "Mordy",
+    "final_grade": 63.77
+  },
+  {
+    "studentID": 20231178,
+    "first_name": "Garry",
+    "last_name": "Keach",
+    "final_grade": 89.08
+  },
+  {
+    "studentID": 20231179,
+    "first_name": "Ashil",
+    "last_name": "Streeton",
+    "final_grade": 29.93
+  },
+  {
+    "studentID": 20231180,
+    "first_name": "Anthia",
+    "last_name": "Emsley",
+    "final_grade": 50.11
+  },
+  {
+    "studentID": 20231181,
+    "first_name": "Inglebert",
+    "last_name": "Yglesia",
+    "final_grade": 10.93
+  },
+  {
+    "studentID": 20231182,
+    "first_name": "Homer",
+    "last_name": "Stansbury",
+    "final_grade": 28.86
+  },
+  {
+    "studentID": 20231183,
+    "first_name": "Frasco",
+    "last_name": "Ubsdall",
+    "final_grade": 67.79
+  },
+  {
+    "studentID": 20231184,
+    "first_name": "Opal",
+    "last_name": "Gotch",
+    "final_grade": 62.52
+  },
+  {
+    "studentID": 20231185,
+    "first_name": "Tyne",
+    "last_name": "Margarson",
+    "final_grade": 52.39
+  },
+  {
+    "studentID": 20231186,
+    "first_name": "Travis",
+    "last_name": "Erricker",
+    "final_grade": 46.92
+  },
+  {
+    "studentID": 20231187,
+    "first_name": "Janene",
+    "last_name": "Swynfen",
+    "final_grade": 23.73
+  },
+  {
+    "studentID": 20231188,
+    "first_name": "Ferdinanda",
+    "last_name": "Ovendon",
+    "final_grade": 18.79
+  },
+  {
+    "studentID": 20231189,
+    "first_name": "Meggy",
+    "last_name": "Meco",
+    "final_grade": 97.89
+  },
+  {
+    "studentID": 20231190,
+    "first_name": "Keen",
+    "last_name": "Ailsbury",
+    "final_grade": 45.45
+  },
+  {
+    "studentID": 20231191,
+    "first_name": "Sidonnie",
+    "last_name": "Hamblyn",
+    "final_grade": 44.63
+  },
+  {
+    "studentID": 20231192,
+    "first_name": "Myriam",
+    "last_name": "Gilardengo",
+    "final_grade": 82.02
+  },
+  {
+    "studentID": 20231193,
+    "first_name": "Bliss",
+    "last_name": "Iorillo",
+    "final_grade": 63.95
+  },
+  {
+    "studentID": 20231194,
+    "first_name": "Rad",
+    "last_name": "Riccione",
+    "final_grade": 29.63
+  },
+  {
+    "studentID": 20231195,
+    "first_name": "Dael",
+    "last_name": "Brodbin",
+    "final_grade": 31.24
+  },
+  {
+    "studentID": 20231196,
+    "first_name": "Helge",
+    "last_name": "Quin",
+    "final_grade": 12.78
+  },
+  {
+    "studentID": 20231197,
+    "first_name": "Isadora",
+    "last_name": "Linggood",
+    "final_grade": 85.03
+  },
+  {
+    "studentID": 20231198,
+    "first_name": "Thorn",
+    "last_name": "Goforth",
+    "final_grade": 51.02
+  },
+  {
+    "studentID": 20231199,
+    "first_name": "Tiffie",
+    "last_name": "Wittke",
+    "final_grade": 14.8
+  },
+  {
+    "studentID": 20231200,
+    "first_name": "Bald",
+    "last_name": "Sreenan",
+    "final_grade": 66.04
+  },
+  {
+    "studentID": 20231201,
+    "first_name": "Charline",
+    "last_name": "Gallaccio",
+    "final_grade": 14.31
+  },
+  {
+    "studentID": 20231202,
+    "first_name": "Joelle",
+    "last_name": "Condon",
+    "final_grade": 41.38
+  },
+  {
+    "studentID": 20231203,
+    "first_name": "Eadmund",
+    "last_name": "Lowis",
+    "final_grade": 57.01
+  },
+  {
+    "studentID": 20231204,
+    "first_name": "Clerkclaude",
+    "last_name": "Stockings",
+    "final_grade": 28.25
+  },
+  {
+    "studentID": 20231205,
+    "first_name": "Francyne",
+    "last_name": "Skinn",
+    "final_grade": 32.2
+  },
+  {
+    "studentID": 20231206,
+    "first_name": "Jocelyne",
+    "last_name": "Ceschi",
+    "final_grade": 58.59
+  },
+  {
+    "studentID": 20231207,
+    "first_name": "Britt",
+    "last_name": "Frederick",
+    "final_grade": 79.86
+  },
+  {
+    "studentID": 20231208,
+    "first_name": "Carolann",
+    "last_name": "Pendry",
+    "final_grade": 66.27
+  },
+  {
+    "studentID": 20231209,
+    "first_name": "Anstice",
+    "last_name": "Saines",
+    "final_grade": 65.29
+  },
+  {
+    "studentID": 20231210,
+    "first_name": "Loy",
+    "last_name": "Whitman",
+    "final_grade": 52.73
+  },
+  {
+    "studentID": 20231211,
+    "first_name": "Salvidor",
+    "last_name": "Ladlow",
+    "final_grade": 72.57
+  },
+  {
+    "studentID": 20231212,
+    "first_name": "Dedie",
+    "last_name": "Slayton",
+    "final_grade": 84.48
+  },
+  {
+    "studentID": 20231213,
+    "first_name": "Patrick",
+    "last_name": "Tring",
+    "final_grade": 33.03
+  },
+  {
+    "studentID": 20231214,
+    "first_name": "Pernell",
+    "last_name": "Rix",
+    "final_grade": 85.13
+  },
+  {
+    "studentID": 20231215,
+    "first_name": "Pearle",
+    "last_name": "Urquhart",
+    "final_grade": 55.33
+  },
+  {
+    "studentID": 20231216,
+    "first_name": "Farrel",
+    "last_name": "Roman",
+    "final_grade": 79.96
+  },
+  {
+    "studentID": 20231217,
+    "first_name": "Morgana",
+    "last_name": "Juorio",
+    "final_grade": 23.46
+  },
+  {
+    "studentID": 20231218,
+    "first_name": "Hailey",
+    "last_name": "Jupp",
+    "final_grade": 83.58
+  },
+  {
+    "studentID": 20231219,
+    "first_name": "Jacquetta",
+    "last_name": "Dearle",
+    "final_grade": 94.46
+  },
+  {
+    "studentID": 20231220,
+    "first_name": "Vicki",
+    "last_name": "Purveys",
+    "final_grade": 55.83
+  },
+  {
+    "studentID": 20231221,
+    "first_name": "Alanah",
+    "last_name": "Whatson",
+    "final_grade": 58.3
+  },
+  {
+    "studentID": 20231222,
+    "first_name": "Rhona",
+    "last_name": "Kidsley",
+    "final_grade": 71.48
+  },
+  {
+    "studentID": 20231223,
+    "first_name": "Rozina",
+    "last_name": "MacAllen",
+    "final_grade": 79.59
+  }
+]

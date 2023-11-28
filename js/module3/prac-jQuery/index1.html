@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <style>
+      tr:hover {
+        background-color: thistle;
+      }
+      .active {
+        background-color: lemonchiffon;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <table>
+        <label>product table</label>
+        <thead>
+          <tr>
+            <td>pid</td>
+            <td>pname</td>
+            <td>price</td>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <td>pid</td>
+            <td>pname</td>
+            <td>price</td>
+            <td>amount</td>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </body>
+  <script type="module">
+    import Product from "./class/newProduct.js";
+    import Item from "./class/newItem.js";
+
+    let prodList = [];
+    let itemCollection = [];
+
+    const shopTableGen = () => {
+      $("tbody").eq(1).empty();
+      // itemCollection을 바탕으로 table 만들기
+
+      $.each(itemCollection, (idx, item) => {
+        let tr = item.toRow();
+
+        console.log(tr[0]);
+        // tr.on("click", (e) => {});
+        $("tbody").eq(1).append(tr);
+      });
+    };
+
+    const tableGen = (products) => {
+      $.each(products, (idx, prod) => {
+        const tr = prod.toRow();
+        tr.on("click", (e) => {
+          // click한 Tr 값의 value만 담아 만든 array
+          let clickTr = Object.values(prod);
+          let flag = false;
+
+          // 만약 같은 거 누르면?
+          for (let id in itemCollection) {
+            if (clickTr[0] == itemCollection[id].pid) {
+              let changeAmount = itemCollection[id];
+              changeAmount.amount++;
+              itemCollection[id] = changeAmount;
+              flag = true;
+            }
+          }
+          if (!flag) {
+            let itemObj = new Item(clickTr[0], clickTr[1], clickTr[2]);
+            itemCollection.push(itemObj);
+          }
+          shopTableGen();
+        });
+        $("tbody").eq(0).append(tr);
+      });
+    };
+
+    const load = () => {
+      const prom = new Promise((res, rej) => {
+        $.getJSON("./data/invoice.json", (data, status, xhr) => {
+          if (status == "success") {
+            $.each(data, (idx, prod) => {
+              let mProd = new Product(
+                prod.id,
+                prod.pname,
+                prod.price,
+                prod.amount
+              );
+              prodList.push(mProd);
+            });
+            res(prodList);
+          } else {
+            rej(reason);
+          }
+        });
+      }).then(tableGen, (reason) => {
+        alert(reason);
+      });
+    };
+    load();
+  </script>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <form action="">
+      <input type="text" />
+      <input type="text" />
+      <button>submit</button>
+      <button>save</button>
+    </form>
+    <main></main>
+  </body>
+  <script>
+    // form : take a name and family
+    // when submit -> generate a box containing the name, family in the main tag
+
+    // 2. function - let the user know that it already exists
+    let infoList = [];
+
+    const makeDiv = (name, family) => {
+      const div = $("<div></div>");
+      const div2 = $("<div></div>");
+      div.text(name);
+      div2.text(family);
+      $("main").append(div);
+      $("main").append(div2);
+    };
+
+    const checkInfo = () => {
+      //   console.log(infoList[0]);
+
+      for (let idx in infoList) {
+        // if the input value is same with infoList
+        if (
+          infoList[idx][0] == $("input").eq(0).val() &&
+          infoList[idx][1] == $("input").eq(1).val()
+        ) {
+          return false; // already added
+        } else {
+          return true;
+        }
+      }
+      return true;
+    };
+
+    $("button")
+      .eq(1)
+      .on("click", (e) => {
+        e.preventDefault();
+        // save the infoList to local storage
+        localStorage.setItem("info", infoList);
+      });
+
+    // 1. when i click the submit button..
+    document.querySelector("form").addEventListener("submit", (e) => {
+      // prevent page reset
+      e.preventDefault();
+
+      // take name, family from input
+      const name = $("input").eq(0).val();
+      const family = $("input").eq(1).val();
+      //   infoList.push([name, family]);
+
+      // already submitted
+      if (!checkInfo()) {
+        alert("It's already submitted!");
+      } else {
+        // push the new [name, family] -> array infoList
+        infoList.push([name, family]);
+        // make a box for name, family
+        makeDiv(name, family);
+      }
+
+      //   console.log(infoList);
+    });
+  </script>
+</html>

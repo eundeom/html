@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <table>
+        <thead>
+          <tr>
+            <td>student ID</td>
+            <td>Name</td>
+            <td>Final Grade</td>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </body>
+  <script type="module">
+    import Student from "./studentClass.js";
+
+    let studentList = [];
+    let gradeList = [];
+    let bubbleArray = [];
+    let sortedArray = [];
+    let sum = 0;
+
+    // logic.. that i wanna do
+    // if the value of bubbledArray(ONLY sorted grade) and the student.grand of studentList
+    // is same, then i wanna push the tr to another array(sortedArray)
+    // and i wanna generate the table.
+    const sort = () => {
+      for (let stud of studentList) {
+        // console.log(bubbleArray[stud]);
+        // for (let stu in stud) {
+        for (let i = 0; i < 100; i++) {
+          //   console.log(stud.grade, bubbleArray[i]);
+          if (bubbleArray[i] == stud.grade) {
+            // console.log(stud);
+            sortedArray.push(stud);
+            console.log(i); // i don't know why the i is not 1 to 100.. :(
+          }
+        }
+      }
+    };
+
+    const bubbleSorting = (arr, order) => {
+      //   console.log(gradeList);
+
+      for (let a = 0; a <= arr.length - 1; a++) {
+        for (let b = a + 1; b <= arr.length - 1; b++) {
+          if (arr[a] < arr[b]) {
+            let tmp = arr[a];
+            arr[a] = arr[b];
+            arr[b] = tmp;
+          }
+        }
+      }
+      if (order == "1") {
+        // Decending 내림차순
+        return arr;
+      } else {
+        // Accending 오름차순
+        return arr.reverse();
+      }
+    };
+
+    // generate the table with toRow() function of studentClass.js
+    const tableGen = (students) => {
+      // make a ONLY grade value array
+      for (let stu of studentList) {
+        gradeList.push(stu.grade);
+      }
+      // array that bubble sorted
+      bubbleArray = bubbleSorting(gradeList, 1);
+      //   console.log(bubbleArray);
+
+      sort();
+      console.log(sortedArray);
+
+      $.each(sortedArray, (idx, stud) => {
+        const tr = stud.toRow();
+        $("tbody").eq(0).append(tr);
+        sum += stud.grade;
+      });
+
+      // show the average of the sudents separately in a <h1> above the table.
+      let avgDisplay = $("<h1></h1>");
+      avgDisplay.text("Average : " + sum / students.length);
+      $(".container-fluid").prepend(avgDisplay);
+    };
+
+    // load the data from json file using promise
+    const load = () => {
+      let prom = new Promise((res, rej) => {
+        $.getJSON("./students.json", (data, status, xhr) => {
+          if (status == "success") {
+            $.each(data, (idx, student) => {
+              let studentObj = new Student(
+                student.studentID,
+                student.first_name,
+                student.last_name,
+                student.final_grade
+              );
+              studentList.push(studentObj);
+            });
+            res(studentList);
+          } else {
+            rej(status);
+          }
+        });
+      }).then(tableGen, (reason) => {
+        alert(reason);
+      });
+    };
+    load();
+  </script>
+</html>
